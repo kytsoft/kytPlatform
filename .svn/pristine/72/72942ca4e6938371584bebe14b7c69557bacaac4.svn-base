@@ -1,0 +1,213 @@
+/*
+ * An XML document type.
+ * Localname: xor
+ * Namespace: 
+ * Java type: com.kyt.xsd.widgetmenu.XorDocument
+ *
+ * Automatically generated - do not modify.
+ */
+package com.kyt.xsd.widgetmenu.impl;
+/**
+ * A document containing one xor(@) element.
+ *
+ * This is a complex type.
+ */
+public class XorDocumentImpl extends com.kyt.xsd.widgetmenu.impl.AllConditionalsDocumentImpl implements com.kyt.xsd.widgetmenu.XorDocument
+{
+    private static final long serialVersionUID = 1L;
+    
+    public XorDocumentImpl(org.apache.xmlbeans.SchemaType sType)
+    {
+        super(sType);
+    }
+    
+    private static final javax.xml.namespace.QName XOR$0 = 
+        new javax.xml.namespace.QName("", "xor");
+    
+    
+    /**
+     * Gets the "xor" element
+     */
+    public com.kyt.xsd.widgetmenu.XorDocument.Xor getXor()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            com.kyt.xsd.widgetmenu.XorDocument.Xor target = null;
+            target = (com.kyt.xsd.widgetmenu.XorDocument.Xor)get_store().find_element_user(XOR$0, 0);
+            if (target == null)
+            {
+                return null;
+            }
+            return target;
+        }
+    }
+    
+    /**
+     * Sets the "xor" element
+     */
+    public void setXor(com.kyt.xsd.widgetmenu.XorDocument.Xor xor)
+    {
+        generatedSetterHelperImpl(xor, XOR$0, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+    }
+    
+    /**
+     * Appends and returns a new empty "xor" element
+     */
+    public com.kyt.xsd.widgetmenu.XorDocument.Xor addNewXor()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            com.kyt.xsd.widgetmenu.XorDocument.Xor target = null;
+            target = (com.kyt.xsd.widgetmenu.XorDocument.Xor)get_store().add_element_user(XOR$0);
+            return target;
+        }
+    }
+    /**
+     * An XML xor(@).
+     *
+     * This is a complex type.
+     */
+    public static class XorImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements com.kyt.xsd.widgetmenu.XorDocument.Xor
+    {
+        private static final long serialVersionUID = 1L;
+        
+        public XorImpl(org.apache.xmlbeans.SchemaType sType)
+        {
+            super(sType);
+        }
+        
+        private static final javax.xml.namespace.QName ALLCONDITIONALS$0 = 
+            new javax.xml.namespace.QName("", "AllConditionals");
+        private static final org.apache.xmlbeans.QNameSet ALLCONDITIONALS$1 = org.apache.xmlbeans.QNameSet.forArray( new javax.xml.namespace.QName[] { 
+            new javax.xml.namespace.QName("", "xor"),
+            new javax.xml.namespace.QName("", "if-validate-method"),
+            new javax.xml.namespace.QName("", "or"),
+            new javax.xml.namespace.QName("", "AllConditionals"),
+            new javax.xml.namespace.QName("", "if-compare-field"),
+            new javax.xml.namespace.QName("", "and"),
+            new javax.xml.namespace.QName("", "not"),
+            new javax.xml.namespace.QName("", "if-entity-permission"),
+            new javax.xml.namespace.QName("", "if-service-permission"),
+            new javax.xml.namespace.QName("", "if-compare"),
+            new javax.xml.namespace.QName("", "if-empty"),
+            new javax.xml.namespace.QName("", "if-regexp"),
+            new javax.xml.namespace.QName("", "if-has-permission"),
+        });
+        
+        
+        /**
+         * Gets array of all "AllConditionals" elements
+         */
+        public org.apache.xmlbeans.XmlObject[] getAllConditionalsArray()
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                java.util.List targetList = new java.util.ArrayList();
+                get_store().find_all_element_users(ALLCONDITIONALS$1, targetList);
+                org.apache.xmlbeans.XmlObject[] result = new org.apache.xmlbeans.XmlObject[targetList.size()];
+                targetList.toArray(result);
+                return result;
+            }
+        }
+        
+        /**
+         * Gets ith "AllConditionals" element
+         */
+        public org.apache.xmlbeans.XmlObject getAllConditionalsArray(int i)
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                org.apache.xmlbeans.XmlObject target = null;
+                target = (org.apache.xmlbeans.XmlObject)get_store().find_element_user(ALLCONDITIONALS$1, i);
+                if (target == null)
+                {
+                    throw new IndexOutOfBoundsException();
+                }
+                return target;
+            }
+        }
+        
+        /**
+         * Returns number of "AllConditionals" element
+         */
+        public int sizeOfAllConditionalsArray()
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                return get_store().count_elements(ALLCONDITIONALS$1);
+            }
+        }
+        
+        /**
+         * Sets array of all "AllConditionals" element  WARNING: This method is not atomicaly synchronized.
+         */
+        public void setAllConditionalsArray(org.apache.xmlbeans.XmlObject[] allConditionalsArray)
+        {
+            check_orphaned();
+            arraySetterHelper(allConditionalsArray, ALLCONDITIONALS$0, ALLCONDITIONALS$1);
+        }
+        
+        /**
+         * Sets ith "AllConditionals" element
+         */
+        public void setAllConditionalsArray(int i, org.apache.xmlbeans.XmlObject allConditionals)
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                org.apache.xmlbeans.XmlObject target = null;
+                target = (org.apache.xmlbeans.XmlObject)get_store().find_element_user(ALLCONDITIONALS$1, i);
+                if (target == null)
+                {
+                    throw new IndexOutOfBoundsException();
+                }
+                target.set(allConditionals);
+            }
+        }
+        
+        /**
+         * Inserts and returns a new empty value (as xml) as the ith "AllConditionals" element
+         */
+        public org.apache.xmlbeans.XmlObject insertNewAllConditionals(int i)
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                org.apache.xmlbeans.XmlObject target = null;
+                target = (org.apache.xmlbeans.XmlObject)get_store().insert_element_user(ALLCONDITIONALS$1, ALLCONDITIONALS$0, i);
+                return target;
+            }
+        }
+        
+        /**
+         * Appends and returns a new empty value (as xml) as the last "AllConditionals" element
+         */
+        public org.apache.xmlbeans.XmlObject addNewAllConditionals()
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                org.apache.xmlbeans.XmlObject target = null;
+                target = (org.apache.xmlbeans.XmlObject)get_store().add_element_user(ALLCONDITIONALS$0);
+                return target;
+            }
+        }
+        
+        /**
+         * Removes the ith "AllConditionals" element
+         */
+        public void removeAllConditionals(int i)
+        {
+            synchronized (monitor())
+            {
+                check_orphaned();
+                get_store().remove_element(ALLCONDITIONALS$1, i);
+            }
+        }
+    }
+}
