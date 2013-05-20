@@ -40,14 +40,18 @@
 	<br /><br />
 	<div id="attribute">
 		<table id="dg" class="easyui-datagrid" title="${uiLabelMap.managerAttribute!}" style="width:auto;height:250px"
+<<<<<<< HEAD
 			data-options="iconCls:'icon-edit',fitColumns:true,singleSelect:true,toolbar:'#tb',url:'',onClickRow: onClickRow">
+=======
+			data-options="iconCls:'icon-edit',singleSelect:true,toolbar:'#tb',url:'',onClickRow: onClickRow,fitColumns:true">
+>>>>>>> a82a287a421cc6791992fb05b702489747284e72
 			<thead>
 				<tr>
-	                <th data-options="field:'fieldname',width:100,align:'center',editor:{type:'text',required:true}">${uiLabelMap.fieldName!}</th>
-	                <th data-options="field:'fielddis',width:100,align:'center',editor:'text'">${uiLabelMap.describe!}</th>
-	                <th data-options="field:'fieldtype',width:140,align:'center',formatter:function(value,row){return value;},editor:{type:'combobox',options:{valueField:'id',textField:'text',data:_typejson,required:true}}">${uiLabelMap.type!}</th>
-					<th data-options="field:'fieldnotnull',width:100,align:'center',editor:{type:'checkbox',options:{on:'true',off:'false'}}">${uiLabelMap.isnull!}</th>
-					<th data-options="field:'primkey',width:100,align:'center',editor:{type:'checkbox',options:{on:'true',off:'false'}}">${uiLabelMap.primary!}</th>
+	                <th data-options="width:10,field:'fieldname',align:'center',editor:{type:'text',required:true}">${uiLabelMap.fieldName!}</th>
+	                <th data-options="width:30,field:'fielddis',align:'center',editor:'text'">${uiLabelMap.describe!}</th>
+	                <th data-options="width:30,field:'fieldtype',align:'center',formatter:function(value,row){return value;},editor:{type:'combobox',options:{valueField:'id',textField:'text',data:_typejson,required:true}}">${uiLabelMap.type!}</th>
+					<th data-options="width:10,field:'fieldnotnull',align:'center',editor:{type:'checkbox',options:{on:'true',off:'false'}}">${uiLabelMap.isnull!}</th>
+					<th data-options="width:10,field:'primkey',align:'center',editor:{type:'checkbox',options:{on:'true',off:'false'}}">${uiLabelMap.primary!}</th>
 					<th data-options="field:'fieldindex',hidden:true"></th>
 					<th data-options="field:'fieldoldname',hidden:true"></th>
 				</tr>
@@ -63,13 +67,17 @@
 	<br /><br />
 	<div id="pkattribute">
 		<table id="fks" class="easyui-datagrid" title="${uiLabelMap.managerguanxi!}" style="width:auto;height:250px"  
+<<<<<<< HEAD
 			data-options="iconCls:'icon-edit',fitColumns:true,singleSelect:true,toolbar:'#tb1',url:'',onClickRow: onClickRows">
+=======
+			data-options="iconCls:'icon-edit',singleSelect:true,toolbar:'#tb1',url:'',onClickCell:onClickCell,fitColumns:true">
+>>>>>>> a82a287a421cc6791992fb05b702489747284e72
 			<thead>
 				<tr>
 					<th data-options="field:'fkname',width:100,align:'center',editor:{type:'text',options:{required: true}}">${uiLabelMap.fkName!}</th>
-	                <th data-options="field:'entityfield',width:100,align:'center',editor:{type:'text',options:{required: true}}">${uiLabelMap.primaryKey!}</th>
-	                <th data-options="field:'relentity',width:140,align:'center',formatter:function(value,row){return value;},editor:{type:'combobox',options:{valueField:'id',textField:'text',data:relentity_json,required:true}}">${uiLabelMap.Associative!}</th>
-					<th data-options="field:'relentityfield',width:140,align:'center',editor:'text'">${uiLabelMap.fk!}</th>
+	                <th data-options="field:'entityfield',width:100,align:'center',formatter:function(value,row){return value;}">${uiLabelMap.primaryKey!}</th>
+	                <th data-options="field:'relentity',width:140,align:'center',formatter:function(value,row){return value;}">${uiLabelMap.Associative!}</th>
+					<th data-options="field:'relentityfield',width:140,align:'center',formatter:function(value,row){return value;},editor:{type:'text'}">${uiLabelMap.fk!}</th>
 					<th data-options="field:'relation',width:100,align:'center',formatter:function(value,row){return value;},editor:{type:'combobox',options:{valueField:'id',textField:'text',data:relationjson,required: true}}">${uiLabelMap.relation!}</th>
 					<th data-options="field:'relationtitle',width:100,align:'center',editor:'text'">${uiLabelMap.describe!}</th>
 					<th data-options="field:'relationindex',hidden:true"></th>
