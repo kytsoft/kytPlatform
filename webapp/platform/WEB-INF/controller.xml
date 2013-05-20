@@ -38,7 +38,8 @@
     <request-map uri="uploadEntityXml">
     	<security https="true" auth="false"/>
     	<event type="java" path="com.kyt.platform.entity.EntityEvents" invoke="uploadEntityXml"/>
-   		<response name="success" type="view" value="test"/>
+   		<response name="success" type="none"/>
+<!--    		<response name="success" type="view" value="test"/> -->
     </request-map>
     <!-- 获取字段类型列表 -->
     <request-map uri="getFieldTypes">

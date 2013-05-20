@@ -60,6 +60,7 @@ public class EntityEvents {
 	 */
 	public static String uploadEntityXml(HttpServletRequest request,
 			HttpServletResponse response) {
+		String result = "error";
 		String xmlName = request.getParameter("xmlName");
 		String xmlContent = request.getParameter("xmlContent");
 		try {
@@ -67,11 +68,22 @@ public class EntityEvents {
 					.resolveLocation("component://platform/entitydef/"
 							+ xmlName + ".xml");
 			FileUtils.writeStringToFile(new File(url.getPath()), xmlContent);
+			result = "success";
 		} catch (IOException e) {
+			result = "error";
 			e.printStackTrace();
-			return "error";
 		}
-		return "success";
+		List<String> list = new ArrayList<String>();
+		list.add(result);
+		try {
+			Writer writer = response.getWriter();
+			JSONSerializer.toJSON(list).write(writer);
+			writer.flush();
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	/**

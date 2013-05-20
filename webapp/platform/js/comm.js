@@ -11,7 +11,6 @@ $.ajax({
 	success: type_ready,
 	error: error_func
 });
-
 $(document).ready(function(){
 	$.ajax({
 		url:'/platform/control/downloadEntityXml',
@@ -72,6 +71,7 @@ function saveEntity() {
 				}
 			}
 		);
+		uploadEntityXml();
 	}else{
 		var _savexml = '';
 		_savexml = '<entity entity-name="'+ _name +'" package-name="'+ _package +'" title="'+ _title +'"></entity>';
@@ -87,6 +87,7 @@ function destroyEntity() {
 					if (r) {
 						$(_result).find('entity[entity-name="' + row.entityname + '"]').remove();
 						$('#dg1').datagrid('loadData',{total:0,rows:[]});
+						uploadEntityXml();
 						xml_load_entity();
 					}
 				});
@@ -409,6 +410,7 @@ function __reload_field(){
 function _save_field(){
 	_fieldeditcg=false;
 	$('#dg').datagrid('acceptChanges');
+	uploadEntityXml();
 }
 function __reload_fkfield(){
 	_fkfieldeditcg=false;
@@ -417,6 +419,7 @@ function __reload_fkfield(){
 function _save_fkfield(){
 	_fkfieldeditcg=false;
 	$('#fks').datagrid('acceptChanges');
+	uploadEntityXml();
 }
 function _selectEntityName(){
 	if(_upind==undefined){
@@ -424,4 +427,25 @@ function _selectEntityName(){
 		return false;
 	}
 	return true;
+}
+function uploadEntityXml(){
+	$.ajax({
+			url:'/platform/control/uploadEntityXml',
+			//url: '<@ofbizUrl>uploadEntityXml</@ofbizUrl>',
+			type: "POST",
+			async:false,
+			data:{"xmlName":"entitymodel","xmlContent":$(_result).xml()},
+			dataType: "json",
+			success: function(data){
+				alert("data : " + data);
+				if(data=="success"){
+					console.log("upload entity success!");
+				}else{
+					console.log("upload entity error!");
+				}
+			},
+			error: function(){
+				alert("保存文件失败!");
+			}
+	});
 }
