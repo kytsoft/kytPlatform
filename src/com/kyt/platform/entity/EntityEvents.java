@@ -16,9 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONSerializer;
+import noNamespace.EntitymodelDocument;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.xmlbeans.XmlOptions;
 import org.ofbiz.base.location.ComponentLocationResolver;
 
 import com.kyt.xsd.fieldtypemodel.FieldTypeDefDocument.FieldTypeDef;
@@ -67,9 +68,13 @@ public class EntityEvents {
 			URL url = new ComponentLocationResolver()
 					.resolveLocation("component://platform/entitydef/"
 							+ xmlName + ".xml");
-			FileUtils.writeStringToFile(new File(url.getPath()), xmlContent);
+			EntitymodelDocument doc = EntitymodelDocument.Factory.parse(xmlContent);
+			XmlOptions options = new XmlOptions();
+			options.setSavePrettyPrint();
+			options.setSavePrettyPrintIndent(4);
+			doc.save(new File(url.getPath()), options);
 			result = "success";
-		} catch (IOException e) {
+		} catch (Exception e) {
 			result = "error";
 			e.printStackTrace();
 		}

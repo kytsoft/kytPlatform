@@ -40,7 +40,7 @@
 	<br /><br />
 	<div id="attribute">
 		<table id="dg" class="easyui-datagrid" title="${uiLabelMap.managerAttribute!}" style="width:auto;height:250px"
-			data-options="iconCls:'icon-edit',singleSelect:true,toolbar:'#tb',url:'',onClickRow: onClickRow">
+			data-options="iconCls:'icon-edit',fitColumns:true,singleSelect:true,toolbar:'#tb',url:'',onClickRow: onClickRow">
 			<thead>
 				<tr>
 	                <th data-options="field:'fieldname',width:100,align:'center',editor:{type:'text',required:true}">${uiLabelMap.fieldName!}</th>
@@ -63,7 +63,7 @@
 	<br /><br />
 	<div id="pkattribute">
 		<table id="fks" class="easyui-datagrid" title="${uiLabelMap.managerguanxi!}" style="width:auto;height:250px"  
-			data-options="iconCls:'icon-edit',singleSelect:true,toolbar:'#tb1',url:'',onClickRow: onClickRows">
+			data-options="iconCls:'icon-edit',fitColumns:true,singleSelect:true,toolbar:'#tb1',url:'',onClickRow: onClickRows">
 			<thead>
 				<tr>
 					<th data-options="field:'fkname',width:100,align:'center',editor:{type:'text',options:{required: true}}">${uiLabelMap.fkName!}</th>

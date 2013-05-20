@@ -153,11 +153,11 @@ function __onSelEntity(index,row){
 	$(_selectentity).find('field').each(function(index){
 		if($.inArray($(this).attr('name'), _primarr)==-1){
 			$('#dg').datagrid('appendRow',
-				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").html(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'false',"fieldindex":index,"fieldoldname":$(this).attr('name')}
+				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").val(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'false',"fieldindex":index,"fieldoldname":$(this).attr('name')}
 			);
 		}else{
 			$('#dg').datagrid('appendRow',
-				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").html(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'true',"fieldindex":index,"fieldoldname":$(this).attr('name')}
+				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").val(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'true',"fieldindex":index,"fieldoldname":$(this).attr('name')}
 			);
 		}
 	});
@@ -214,7 +214,7 @@ function acceptField(){
 				}else{
 					_senty.find('prim-key[field='+ _changerows[i].fieldoldname +']').remove();
 				}
-				_thisupd.find('description').html(_changerows[i].fielddis);
+				_thisupd.find('description').val(_changerows[i].fielddis);
 				_thisupd.attr('type',_changerows[i].fieldtype);
 				_thisupd.attr('not-null',_changerows[i].fieldnotnull);
 				_thisupd.attr('name',_changerows[i].fieldname);
