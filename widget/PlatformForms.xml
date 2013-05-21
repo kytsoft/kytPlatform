@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
 
+	<form name="ListForms" type="list" list-name="formList"
+		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		<actions>
+			<service service-name="getFormList"/>
+		</actions>
+		<field name="name">
+			<display />
+		</field>
+		<field name="type">
+			<display />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+	</form>
 
 </forms>

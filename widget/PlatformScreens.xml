@@ -37,5 +37,20 @@
             </widgets>
         </section>
     </screen>
+    
+    <screen name="formManagementScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<include-form location="component://platform/widget/PlatformForms.xml" name="ListForms"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 
 </screens>

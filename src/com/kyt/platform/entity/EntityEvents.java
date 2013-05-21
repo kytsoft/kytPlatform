@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONSerializer;
-import noNamespace.EntitymodelDocument;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.xmlbeans.XmlOptions;
 import org.ofbiz.base.location.ComponentLocationResolver;
 
+import com.kyt.xsd.entitymodel.EntitymodelDocument;
 import com.kyt.xsd.fieldtypemodel.FieldTypeDefDocument.FieldTypeDef;
 import com.kyt.xsd.fieldtypemodel.FieldtypemodelDocument;
 

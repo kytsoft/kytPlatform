@@ -25,7 +25,11 @@
     </property>
     <property key="EntityManagement">
         <value xml:lang="en">Entity Management</value>
-        <value xml:lang="zh">实体维护</value>
+        <value xml:lang="zh">实体管理</value>
+    </property>
+    <property key="FormManagement">
+        <value xml:lang="en">Form Management</value>
+        <value xml:lang="zh">表单管理</value>
     </property>
     <property key="PlatformApplication">
         <value xml:lang="en">Platform Application</value>

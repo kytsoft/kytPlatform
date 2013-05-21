@@ -7,10 +7,22 @@
     <description>None</description>
     <copyright/>
     <version/>
+    <entity entity-name="qqq" package-name="" title="">
+        <prim-key field="qq"/>
+    </entity>
     <entity entity-name="aaa" package-name="" title="">
+        <field name="name" type="object" not-null="false">
+            <description/>
+        </field>
         <field name="id" type="id-long" not-null="false">
             <description>id</description>
         </field>
         <prim-key field="id"/>
+        <relation type="one" fk-name="FK_" title="" rel-entity-name="aaa">
+            <key-map field-name="id" rel-field-name="id"/>
+        </relation>
+        <relation type="many" fk-name="FK_12" title="" rel-entity-name="aaa">
+            <key-map field-name="id" rel-field-name="id"/>
+        </relation>
     </entity>
 </entitymodel>
