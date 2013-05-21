@@ -75,6 +75,19 @@ function saveEntity() {
 		);
 		uploadEntityXml();
 	}else{
+		var entity_name_double = false;
+		$(_result).find('entity').each(function(){
+			if($(this).attr('entity-name')==_name){
+				$.messager.alert('提示','实体名字重复!');
+				entity_name_double = true;
+				return false;
+			}
+		});
+		if(entity_name_double==true){
+			$('#dlg').dialog('close');
+			xml_load_entity();
+			return false;
+		}
 		var _savexml = '';
 		_savexml = '<entity entity-name="'+ _name +'" package-name="'+ _package +'" title="'+ _title +'"></entity>';
 		$(_result).find('version').afterXml(_savexml);
@@ -134,11 +147,9 @@ function onClickEntity(index,row){
 		__onSelEntity(index,row);
 	}else if(exit1==true&&exit2==true){
 		_fieldeditcg=false;
-//		__onSelEntity(index,row);
 		$('#dg1').datagrid('selectRow',_upind);
 	}else if(exit1==true&&exit2==false){
 		_fieldeditcg=false;
-//		__onSelEntity(index,row);
 		$('#dg1').datagrid('selectRow',_upind);
 	}else{
 		$('#dg1').datagrid('selectRow',_upind);
@@ -157,19 +168,11 @@ function __onSelEntity(index,row){
 	$(_selectentity).find('field').each(function(index){
 		if($.inArray($(this).attr('name'), _primarr)==-1){
 			$('#dg').datagrid('appendRow',
-<<<<<<< HEAD
-				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").val(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'false',"fieldindex":index,"fieldoldname":$(this).attr('name')}
-			);
-		}else{
-			$('#dg').datagrid('appendRow',
-				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").val(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'true',"fieldindex":index,"fieldoldname":$(this).attr('name')}
-=======
 				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").text(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'false',"fieldindex":index,"fieldoldname":$(this).attr('name')}
 			);
 		}else{
 			$('#dg').datagrid('appendRow',
 				{"fieldname":$(this).attr('name'),"fielddis":$(this).find("description").text(),"fieldtype":$(this).attr('type'),"fieldnotnull":$(this).attr('not-null'),"primkey":'true',"fieldindex":index,"fieldoldname":$(this).attr('name')}
->>>>>>> a82a287a421cc6791992fb05b702489747284e72
 			);
 		}
 	});
@@ -200,6 +203,7 @@ function acceptField(){
 	if(_selectEntityName()==false) return;
 	var _changerows = $('#dg').datagrid('getChanges');
 	var _change = _changerows.length;
+	var field_name_double=false;
 	if( _change > 0){
 		endEditing();
 		var _senty = $(_result).find('entity').eq(_upind);
@@ -208,6 +212,19 @@ function acceptField(){
 				continue; //字段名为空,忽略添加(或修改)
 			}
 			if(_changerows[i].fieldindex!=undefined){
+				if(_changerows[i].fieldoldname!=_changerows[i].fieldname){
+					if(_senty.find('field[name='+ _changerows[i].fieldname +']').length>0){
+						field_name_double=true;
+						$.messager.alert('提示','字段名称重复!');
+						$('#dg').datagrid('updateRow',{
+							index: _changerows[i].fieldindex,
+							row: {
+								fieldname: _changerows[i].fieldoldname,
+							}
+						});
+						continue;
+					}
+				}
 				var _thisupd = _senty.find('field[name='+ _changerows[i].fieldoldname +']');
 				if(_changerows[i].primkey=='true'){
 					if(_changerows[i].fieldoldname!=_changerows[i].fieldname){
@@ -231,6 +248,11 @@ function acceptField(){
 				_thisupd.attr('not-null',_changerows[i].fieldnotnull);
 				_thisupd.attr('name',_changerows[i].fieldname);
 			}else{
+				if(_senty.find('field[name='+ _changerows[i].fieldname +']').length>0){
+					field_name_double=true;
+					$.messager.alert('提示','字段名称重复!');
+					continue;
+				}
 				var _savexml = '<field name="'+ _changerows[i].fieldname +'" type="'+ _changerows[i].fieldtype +'" not-null="'+ _changerows[i].fieldnotnull +'"><description>'+ _changerows[i].fielddis +'</description></field>';
 				_senty.prependXml(_savexml);
 				if(_changerows[i].primkey=='true'){
@@ -242,8 +264,11 @@ function acceptField(){
 	}else{
 		$.messager.alert('提示','没有字段修改!');
 	}
-	_save_field();
-	__reload_field();
+	if(field_name_double==true){
+	}else{
+		_save_field();
+		__reload_field();
+	}
 }
 function removeField(){
 	if(_selectEntityName()==false) return;
@@ -251,26 +276,40 @@ function removeField(){
 	if (row) {
 		$.messager.confirm('提示','确定删除这个字段?', function(r) {
 					if (r) {
-						//该字段是否绑定有该实体外键,删除时是否忽略(1/2)
-						if (editfieldIndex == undefined) {
-							return;
+						if(endEditing()){
+							var hasRelation = false;
+							var Fk_Relation_Index=-1;
+							var _senty = $(_result).find('entity').eq(_upind);
+							_senty.find('relation').each(function(index){
+								if($(this).find('key-map').attr('field-name')==row.fieldoldname){
+									hasRelation = true;
+									Fk_Relation_Index = index;
+									return false;
+								}
+							});
+							if(hasRelation==true){
+								$.messager.confirm('提示','这个字段有外键关联,确定删除?', function(r) {
+									if (r) {
+										$(_senty).find('field[name='+ row.fieldoldname +']').remove();
+										$(_senty).find('prim-key[field='+ row.fieldoldname +']').remove();
+										$(_senty).find('relation').eq(Fk_Relation_Index).remove();
+										$('#dg').datagrid('loadData',{total:0,rows:[]});
+										_save_field();
+										__reload_field();
+									}
+								});
+							}else{
+								$(_senty).find('field[name='+ row.fieldoldname +']').remove();
+								$(_senty).find('prim-key[field='+ row.fieldoldname +']').remove();
+								$('#dg').datagrid('loadData',{total:0,rows:[]});
+								_save_field();
+								__reload_field();
+							}
 						}
-						$('#dg').datagrid('cancelEdit', editfieldIndex).datagrid('deleteRow', editfieldIndex);
-						editfieldIndex = undefined;
-						var _senty = $(_result).find('entity').eq(_upind);
-						$(_senty).find('field[name='+ row.fieldoldname +']').remove();
-						$(_senty).find('prim-key[field='+ row.fieldoldname +']').remove();
-						$('#dg').datagrid('loadData',{total:0,rows:[]});
-						_save_field();
-						__reload_field();
 					}
 				});
 	}
 }
-/*function rejectField(){
-	if(_selectEntityName()==false) return;
-	$('#dg').datagrid('rejectChanges');
-}*/
 function newRelation(){
 	if(_selectEntityName()==false) return;
 	var _senty = $(_result).find('entity').eq(_upind);
@@ -299,17 +338,11 @@ function removeRelation(){
 				});
 	}
 }
-/*
- * =======================relation Xml=============================
- * <relation type="one" fk-name="FK_NAME" title="description" rel-entity-name="Entity">
- * 	<key-map field-name="fieldname" rel-field-name="fieldname"/>
- * </relation>
- *=================================================================
- */
 function acceptRelation(){
 	if(_selectEntityName()==false) return;
 	var _changerows = $('#fks').datagrid('getChanges');
 	var _change = _changerows.length;
+	var relation_name_double=false;
 	if( _change > 0){
 		endFkEditing();
 		var _senty = $(_result).find('entity').eq(_upind);
@@ -319,6 +352,19 @@ function acceptRelation(){
 				continue;
 			}
 			if(_changerows[i].relationindex!=undefined){
+				if(_changerows[i].fkname!=_changerows[i].relationoldname){
+					if(_senty.find('relation[fk-name='+ _changerows[i].fkname +']').length>0){
+						relation_name_double=true;
+						$.messager.alert('提示','外键名称重复!');
+						$('#fks').datagrid('updateRow',{
+							index: _changerows[i].relationindex,
+							row: {
+								fkname: _changerows[i].relationoldname,
+							}
+						});
+						return false;
+					}
+				}
 				var _fkname = _changerows[i].fkname;
 				var _fkname_old = _changerows[i].relationoldname;
 				var _fktype = _changerows[i].relation;
@@ -338,6 +384,11 @@ function acceptRelation(){
 					$(_fkdom).attr('fk-name',_fkname);
 				}
 			}else{
+				if(_senty.find('relation[fk-name='+ _changerows[i].fkname +']').length>0){
+					relation_name_double=true;
+					$.messager.alert('提示','外键名称重复!');
+					return false;
+				}
 				var _savexml = '<relation type="'+ _changerows[i].relation +'" fk-name="'+ _changerows[i].fkname +'" title="'+ _changerows[i].relationtitle +'"'+
 				' rel-entity-name="'+ _changerows[i].relentity +'"></relation>';
 				_senty.appendXml(_savexml);
@@ -350,11 +401,12 @@ function acceptRelation(){
 				_senty.find('relation[fk-name='+ _changerows[i].fkname +']').appendXml(_savexml);
 			}
 		}
+	}else{}
+	if(relation_name_double==true){
 	}else{
-		
+		_save_fkfield();
+		__reload_fkfield();
 	}
-	_save_fkfield();
-	__reload_fkfield();
 }
 function endEditing() {
 	if (editfieldIndex == undefined) {
@@ -382,7 +434,8 @@ function endFkEditing() {
 			index : editfkIndex,
 			field : 'fkname'
 		});
-		//$('#fks').datagrid('removeEditor','relentity');
+		$('#fks').datagrid('removeEditor','relentity');
+		$('#fks').datagrid('removeEditor','entityfield');
 		$('#fks').datagrid('endEdit', editfkIndex);
 		editfkIndex = undefined;
 		return true;
@@ -448,12 +501,16 @@ function _selectEntityName(){
 	return true;
 }
 function uploadEntityXml(){
+	var _upresult=$(_result).clone();
+	$(_upresult).find('entity').each(function(index){
+		if($(this).text().trim()){}else{$(this).remove();}
+	});
 	$.ajax({
 			url:'/platform/control/uploadEntityXml',
 			//url: '<@ofbizUrl>uploadEntityXml</@ofbizUrl>',
 			type: "POST",
 			async:false,
-			data:{"xmlName":"entitymodel","xmlContent":$(_result).xml()},
+			data:{"xmlName":"entitymodel","xmlContent":$(_upresult).xml()},
 			dataType: "json",
 			success: function(data){
 				if(data=="success"){
