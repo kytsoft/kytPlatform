@@ -33,5 +33,12 @@
             location="com.kyt.platform.form.FormServices" invoke="removeFormGroup" auth="true">
         <auto-attributes mode="IN" include="pk" optional="false"/>
     </service>
+	<!-- 测试表单 -->
+	<service name="examinationForm" engine="java" location="com.kyt.platform.form.FormServices" invoke="examinationForm" auth="true">
+		<attribute name="xmlname" mode="IN" type="java.lang.String" optional="true"></attribute>
+		<attribute name="formname" mode="INOUT" type="java.lang.String"></attribute>
+		<attribute name="xmlpath" mode="OUT" type="java.lang.String"></attribute>
+		<attribute name="findform" mode="OUT" type="java.lang.String"></attribute>
+	</service>
 
 </services>

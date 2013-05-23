@@ -86,4 +86,33 @@
         </section>
     </screen>
 
+	<!-- The Form Test -->
+	<screen name="examinationForm">
+		<section>
+			<actions>
+				<set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+				<service service-name="examinationForm" result-map="formresult">
+					<field-map field-name="formname" value="${parameters.formname}"/>
+					<field-map field-name="xmlname" value="${parameters.xmlname}"/>
+				</service>
+			</actions>
+			<widgets>
+				<section>
+					<condition>
+						<if-compare operator="equals" value="true" field="formresult.findform"/>
+					</condition>
+					<widgets>
+						<decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+							<decorator-section name="body">
+								<include-form location="${formresult.xmlpath}" name="${formresult.formname}"/>
+							</decorator-section>
+						</decorator-screen>
+					</widgets>
+					<fail-widgets>
+						<container><label style="h2" text="111"></label></container>
+					</fail-widgets>
+				</section>
+			</widgets>
+		</section>
+	</screen>
 </screens>

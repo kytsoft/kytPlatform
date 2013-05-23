@@ -76,10 +76,16 @@
     	<event type="java" path="com.kyt.platform.entity.EntityEvents" invoke="getFieldTypes"/>
    		<response name="success" type="none"/>
     </request-map>
-    
+    <!-- 测试表单  -->
+    <request-map uri="examinationForm">
+    	<security auth="true" https="true"/>
+    	<response name="success" type="view" value="examinationForm"></response>
+    </request-map>
+
     <!-- View Mappings -->
     <view-map name="main" type="screen" page="component://platform/widget/PlatformScreens.xml#main"/>
     <view-map name="entityManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#entityManagementScreen"/>
     <view-map name="listFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#ListFormGroupScreen"/>
     <view-map name="editFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#EditFormGroupScreen"/>
+	<view-map name="examinationForm" type="screen" page="component://platform/widget/PlatformScreens.xml#examinationForm"/>
 </site-conf>

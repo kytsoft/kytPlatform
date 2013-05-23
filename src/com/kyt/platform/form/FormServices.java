@@ -9,6 +9,7 @@ import javolution.util.FastList;
 import javolution.util.FastMap;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.ofbiz.base.location.ComponentLocationResolver;
 import org.ofbiz.base.util.Debug;
 import org.ofbiz.base.util.UtilMisc;
@@ -137,6 +138,48 @@ public class FormServices {
 			return ServiceUtil.returnError("删除FormGroup失败!");
 		}
 		result.put(ModelService.RESPONSE_MESSAGE, ModelService.RESPOND_SUCCESS);
+		return result;
+	}
+
+	public static Map<String, Object> examinationForm(DispatchContext dctx,
+			Map<String, ? extends Object> context){
+		Map<String, Object> result = ServiceUtil.returnSuccess();
+		String xmlName = context.get("xmlname").toString();
+		String formName = context.get("formname").toString();
+		boolean findForm = false;
+		if(StringUtils.isNotEmpty(xmlName) && StringUtils.isNotEmpty(formName)){
+			URL url = null;
+			try {
+				url = new ComponentLocationResolver().resolveLocation("component://platform/widget/forms/"+ xmlName +".xml");
+			} catch (Exception e) {
+				result.put("findform", "false");
+				e.printStackTrace();
+				return result;
+			}
+			try {
+				FormsDocument doc = FormsDocument.Factory.parse(url);
+				Form[] fs = doc.getForms().getFormArray();
+				for(Form f : fs){
+					if(StringUtils.equals(f.getName(), formName)){
+						findForm = true;
+						break;
+					}
+				}
+			} catch (Exception e) {
+				result.put("findform", "false");
+				e.printStackTrace();
+				return result;
+			}
+		}
+		if(findForm){
+			result.put("formname", formName);
+			result.put("xmlpath", "component://platform/widget/forms/"+ xmlName +".xml");
+			result.put("findform", "true");
+		}else{
+			result.put("formname", "main");
+			result.put("xmlpath", "main");
+			result.put("findform", "false");
+		}
 		return result;
 	}
 }
