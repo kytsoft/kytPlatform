@@ -1,22 +1,17 @@
 
-		<script>
-					function sublit(){
-					alert("ssssssss");
-						$("aaa").submit();
-					}
 		</script>
 			<div  class="main-list"> 
-					<h1>${uiLabelMap.formAttrEdit}</h1>
+					<h1>${uiLabelMap.formAttrcreate}</h1>
 					<div class="plate_left">
 							 <h2>${uiLabelMap.BT}</h2>
-							 <form action = "<@ofbizUrl>formsubmit</@ofbizUrl>" method="post" id="aaa">
+							 <form action = "<@ofbizUrl>createFormsubmit</@ofbizUrl>" method="post" id="aaa">
 							 <table>
 							 	<tr>
-							 		<td>${uiLabelMap.formName}${formAtt.formName!}<input type="hidden" name="formName"  value="${formAtt.formName!}"/>
-							 				<input type="hidden" name="fileName"  value="${formAtt.fileName!}"/>
+							 		<td>${uiLabelMap.formName}<input type="text" name="formName"  value=""/>
+							 				<input type="hidden" name="fileName"  value=""/>
 							 		 </td>
 							 		<td>
-							 				${uiLabelMap.formType}<select name="type" value="${formAtt.formType!}">
+							 				${uiLabelMap.formType}<select name="type" value="">
 							 				  		<option value="list">list</option>
 							 				  		<option value="single">single</option>
 							 				  		<option value="multi">multi</option>
@@ -25,7 +20,7 @@
 							 		 </td>
 							 	</tr>
 							 	<tr>
-							 		<td>target:<input type="text" value="${formAtt.formtarget!}" name="target"></td>
+							 		<td>${uiLabelMap.target}<input type="text" value="" name="target"></td>
 							 		<td></td>
 							 	</tr>
 							 	<tr>

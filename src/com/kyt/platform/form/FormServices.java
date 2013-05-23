@@ -32,13 +32,19 @@ public class FormServices {
 	public static final String module = FormServices.class.getName();
 
 	public static Map<String, Object> getFormList(DispatchContext dctx,
-			Map<String, ? extends Object> context) throws Exception {
+			Map<String, ? extends Object> context)  {
 		Map<String, Object> result = ServiceUtil.returnSuccess();
 		List<Map<String, Object>> datas = FastList.newInstance();
 		Map<String, Object> form = null;
-
+		String fileName = (String) context.get("fileName");
+		System.out.println("DDDDDDDDDDDDDDDDDDDDD");
+		System.out.println(fileName);
+		try{
+//		URL url = new ComponentLocationResolver()
+//				.resolveLocation("component://platform/widget/forms/"+fileName.trim()+".xml");
 		URL url = new ComponentLocationResolver()
-				.resolveLocation("component://platform/widget/forms/CategoryForms.xml");
+				.resolveLocation("component://platform/widget/forms/"+fileName+".xml");
+	
 		FormsDocument doc = FormsDocument.Factory.parse(url);
 		for (Form f : doc.getForms().getFormArray()) {
 			form = FastMap.newInstance();
@@ -46,8 +52,10 @@ public class FormServices {
 			form.put("type", f.getType());
 			datas.add(form);
 		}
-
 		result.put("formList", datas);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return result;
 	}
 

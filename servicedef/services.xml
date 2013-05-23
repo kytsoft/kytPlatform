@@ -14,6 +14,7 @@
 	<service name="getFormList" engine="java"
 		location="com.kyt.platform.form.FormServices" invoke="getFormList"
 		auth="true">
+		 <attribute name="fileName" type="String" mode="IN"/> 
 		<attribute name="formList" mode="OUT" type="java.util.List"></attribute>
 	</service>
 

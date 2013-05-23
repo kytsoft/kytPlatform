@@ -29,9 +29,10 @@ public class FormEvents {
 		String formName=request.getParameter("formName");
 		String type=request.getParameter("type");
 		String target=request.getParameter("target");
+		String fileName=request.getParameter("fileName");
 		try{
 				 url = new ComponentLocationResolver()
-			.resolveLocation("component://platform/widget/forms/CategoryForms.xml");		
+			.resolveLocation("component://platform/widget/forms/"+fileName+".xml");		
 			
 			 doc = FormsDocument.Factory.parse(url);
 		}catch (Exception e) {
@@ -71,9 +72,12 @@ public class FormEvents {
 		Form[] forms = null;
 		Map<String , Object> formAttribute=FastMap.newInstance(); 
 		String formName=request.getParameter("formName");
+		String fileName=request.getParameter("fileName");
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out.println(fileName);
 		try{
 			url = new ComponentLocationResolver()
-			.resolveLocation("component://platform/widget/forms/CategoryForms.xml");		
+			.resolveLocation("component://platform/widget/forms/"+fileName+".xml");		
 			
 			doc = FormsDocument.Factory.parse(url);
 			 forms = doc.getForms().getFormArray();
@@ -96,7 +100,18 @@ public class FormEvents {
 				e.printStackTrace();
 			}
 		}
+		formAttribute.put("fileName",fileName);
 		request.setAttribute("formAtt", formAttribute);
 		return "success";
+	}
+	public static Map<String,Object> createFormaction(HttpServletRequest request,
+			HttpServletResponse response) {
+			FormsDocument doc =null;
+			URL url=null;
+			String formName=request.getParameter("formName");
+			String type=request.getParameter("type");
+			String target=request.getParameter("target");
+			String fileName=request.getParameter("fileName");
+		return null;
 	}
 }

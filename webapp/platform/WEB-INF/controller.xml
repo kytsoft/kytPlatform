@@ -92,6 +92,22 @@
     	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="setFormAttribute"/>
    		<response name="success" type="view" value="formsubmit"/>
     </request-map>
+        <!-- 表单管理 -->
+    <request-map uri="formManagement">
+   		<security https="true" auth="false"/>
+   		<response name="success" type="view" value="formManagement"/>
+    </request-map>
+        <!-- 新建表单 -->
+    <request-map uri="createForm">
+   		<security https="true" auth="false"/>
+   		<response name="success" type="view" value="createForm"/>
+    </request-map>
+        <!-- 新建表单操作 -->
+    <request-map uri="createFormsubmit">
+   		<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="createFormaction"/>
+   		<response name="success" type="view" value="createFormsubmit"/>
+    </request-map>
     <!-- View Mappings -->
      <view-map name="formsubmit" type="screen" page="component://platform/widget/PlatformScreens.xml#formsubmit"/>
     <view-map name="gettype" type="screen" page="component://platform/widget/PlatformScreens.xml#typeList"/>
@@ -100,4 +116,6 @@
     <view-map name="listFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#ListFormGroupScreen"/>
     <view-map name="editFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#EditFormGroupScreen"/>
 	<view-map name="examinationForm" type="screen" page="component://platform/widget/PlatformScreens.xml#examinationForm"/>
+	 <view-map name="formManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#formManagementScreen"/>
+	 <view-map name="createForm" type="screen" page="component://platform/widget/PlatformScreens.xml#createForm"/>
 </site-conf>

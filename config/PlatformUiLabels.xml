@@ -165,6 +165,10 @@
         <value xml:lang="en">Form Attribute</value>
         <value xml:lang="zh">表单属性修改</value>
     </property>
+    <property key="formAttrcreate">
+        <value xml:lang="en">Form Attribute</value>
+        <value xml:lang="zh">新建表单</value>
+    </property>
     <property key="BT">
         <value xml:lang="en">MUST</value>
         <value xml:lang="zh">必选项</value>
@@ -180,5 +184,13 @@
     <property key="xiugai">
         <value xml:lang="en">EDIT</value>
         <value xml:lang="zh">修改</value>
+    </property>
+    <property key="CreateForm">
+        <value xml:lang="en">Create Form</value>
+        <value xml:lang="zh">新建表单</value>
+    </property>
+    <property key="target">
+        <value xml:lang="en">Url Address：</value>
+        <value xml:lang="zh">url地址：</value>
     </property>
 </resource>

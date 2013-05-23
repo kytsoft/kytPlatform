@@ -49,13 +49,43 @@
 			<submit button-type="text-link" />
 		</field>
 	</form>
+	<form name="createForms" type="single" target="updateFormGroup"
+		title="" default-map-name="formGroup" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="FormGroup" value-field="formGroup" />
+		</actions>
+		<alt-target use-when="formGroup==null" target="createFormGroup" />
+		<field use-when="formGroup!=null" name="formGroupId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="fileName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="formName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="type" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="target" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="text-link" />
+		</field>
+	</form>
 
 	<!-- Edit liu jianping -->
-<form name="ListForms" type="list" list-name="formList"
+<form name="ListForms"  type="list"  list-name="formList"
 		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
 		header-row-style="header-row-2" default-table-style="basic-table hover-bar" >
 		<actions>
-			<service service-name="getFormList"/>
+			<set field="fileNames" value="${fileName}"/>			
+			<service service-name="getFormList">
+				<field-map field-name="fileName"  from-field="fileNames"/>
+			</service>
 		</actions>
 		<field name="name">
 			<display />
@@ -68,6 +98,7 @@
 		<field name="dddd"  title="11">
 		    <hyperlink target="gettype"  description="${uiLabelMap.CommonUpdate}" >
                 <parameter param-name="formName" from-field="name"/>
+                <parameter param-name="fileName"  from-field="fileNames"/>
             </hyperlink>
 		</field>
 		<field name="deleteLink" title="${uiLabelMap.CommonEmptyHeader}" widget-style="buttontext">
