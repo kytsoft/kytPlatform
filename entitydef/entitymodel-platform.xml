@@ -12,8 +12,8 @@
 	<entity entity-name="FormGroup" package-name="com.kyt.platform.entitys"
 		title="FormGroup Entity">
 		<field name="formGroupId" type="id-ne"></field>
-		<field name="title" type="name"></field>
-		<field name="fileName" type="url"></field>
+		<field name="title" type="name" not-null="true"></field>
+		<field name="fileName" type="url" not-null="true"></field>
 		<prim-key field="formGroupId" />
 	</entity>
 

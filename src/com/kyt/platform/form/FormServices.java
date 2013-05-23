@@ -1,5 +1,6 @@
 package com.kyt.platform.form;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import javolution.util.FastList;
 import javolution.util.FastMap;
 
+import org.apache.commons.io.FileUtils;
 import org.ofbiz.base.location.ComponentLocationResolver;
 import org.ofbiz.base.util.Debug;
 import org.ofbiz.base.util.UtilMisc;
@@ -62,6 +64,17 @@ public class FormServices {
 			Debug.logWarning(e.getMessage(), module);
 			return ServiceUtil.returnError("创建FormGroup失败!");
 		}
+		try {
+			URL url = new ComponentLocationResolver()
+					.resolveLocation("component://platform/documents/Forms.xml");
+			File file = new File(new ComponentLocationResolver()
+					.resolveLocation("component://platform/widget/forms/")
+					.getPath());
+			FileUtils.copyURLToFile(url,
+					new File(file, formGroup.getString("fileName") + ".xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		result.put("formGroupId", formGroupId);
 		result.put(ModelService.RESPONSE_MESSAGE, ModelService.RESPOND_SUCCESS);
 		return result;
@@ -72,6 +85,7 @@ public class FormServices {
 		Map<String, Object> result = FastMap.newInstance();
 		Delegator delegator = ctx.getDelegator();
 		String formGroupId = context.get("formGroupId").toString();
+		String fileName = (String) context.get("fileName");
 		GenericValue formGroup = null;
 		try {
 			formGroup = delegator.findByPrimaryKey("FormGroup",
@@ -80,26 +94,45 @@ public class FormServices {
 			Debug.logWarning(e.getMessage(), module);
 			return ServiceUtil.returnError("未找到FormGroup!");
 		}
+		String oldFileName = formGroup.getString("fileName");
 		formGroup.setNonPKFields(context);
 		try {
 			formGroup.store();
-		} catch (GenericEntityException e) {
+			if (!oldFileName.equals(fileName)) {
+				FileUtils.moveFile(
+						new File(new ComponentLocationResolver()
+								.resolveLocation(
+										"component://platform/widget/forms/"
+												+ oldFileName + ".xml")
+								.getPath()),
+						new File(new File(new ComponentLocationResolver()
+								.resolveLocation(
+										"component://platform/widget/forms/")
+								.getPath()), fileName + ".xml"));
+			}
+		} catch (Exception e) {
 			Debug.logWarning(e.getMessage(), module);
 			return ServiceUtil.returnError("更新FormGroup失败!");
 		}
 		result.put(ModelService.RESPONSE_MESSAGE, ModelService.RESPOND_SUCCESS);
 		return result;
 	}
-	
+
 	public static Map<String, Object> removeFormGroup(DispatchContext ctx,
 			Map<String, ? extends Object> context) {
 		Map<String, Object> result = FastMap.newInstance();
 		Delegator delegator = ctx.getDelegator();
 		String formGroupId = context.get("formGroupId").toString();
 		try {
-			delegator.removeByAnd("FormGroup",
+			GenericValue formGroup = delegator.findByPrimaryKey("FormGroup",
 					UtilMisc.toMap("formGroupId", formGroupId));
-		} catch (GenericEntityException e) {
+			formGroup.remove();
+			FileUtils.deleteQuietly(new File(new ComponentLocationResolver()
+					.resolveLocation(
+							"component://platform/widget/forms/"
+									+ formGroup.getString("fileName") + ".xml")
+					.getPath()));
+		} catch (Exception e) {
 			Debug.logWarning(e.getMessage(), module);
 			return ServiceUtil.returnError("删除FormGroup失败!");
 		}

@@ -3,24 +3,29 @@
 	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
 
 	<form name="ListFormGroup" type="list" list-name="formGroups"
-		target="editFormGroup" odd-row-style="alternate-row" 
-		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		target="editFormGroup" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
 		<actions>
 			<entity-condition entity-name="FormGroup" list="formGroups" />
 		</actions>
-		<field name="formGroupId"><display also-hidden="true" /></field>
+		<field name="formGroupId">
+			<hyperlink target="" also-hidden="true"></hyperlink>
+		</field>
 		<field name="title">
 			<display />
 		</field>
 		<field name="fileName">
 			<display />
 		</field>
-		<field name="submitButton" title="${uiLabelMap.CommonEdit}"><submit button-type="text-link" /></field>
-        <field name="deleteLink" title="${uiLabelMap.CommonDelete}">
-            <hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}" also-hidden="false">
-                <parameter param-name="formGroupId"/>
-            </hyperlink>
-        </field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
+			<submit button-type="text-link" />
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}"
+				also-hidden="false">
+				<parameter param-name="formGroupId" />
+			</hyperlink>
+		</field>
 	</form>
 
 	<form name="EditFormGroup" type="single" target="updateFormGroup"
@@ -34,10 +39,10 @@
 			tooltip="${uiLabelMap.CommonNotModifRecreat}">
 			<display also-hidden="true" />
 		</field>
-		<field name="title">
+		<field name="title" required-field="true">
 			<text size="30" maxlength="60" />
 		</field>
-		<field name="fileName">
+		<field name="fileName" required-field="true">
 			<text size="30" maxlength="60" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
