@@ -38,15 +38,48 @@
         </section>
     </screen>
     
-    <screen name="formManagementScreen">
+    <screen name="ListFormGroupScreen">
         <section>
             <actions>
-                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="headerItem" value="formManagement"/>
             </actions>
             <widgets>
                 <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                    	<include-form location="component://platform/widget/PlatformForms.xml" name="ListForms"/>
+                    	<container style="button-bar">
+                            <link text="${uiLabelMap.CreateFormGroup}" target="editFormGroup" style="buttontext create"/>
+                        </container>
+                    	<screenlet title="${uiLabelMap.FormGroupList}">
+	                    	<include-form location="component://platform/widget/PlatformForms.xml" name="ListFormGroup"/>
+                    	</screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+     <screen name="EditFormGroupScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/>
+                <set field="titleProperty" value="PageTitleEditWebSite"/>
+                <set field="tabButtonItem" value="EditWebSite"/>
+                <set field="labelTitleProperty" value="PageTitleEditWebSite"/>
+                <set field="webSiteId" from-field="parameters.webSiteId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+	                            <container style="button-bar">
+		                            <link text="${uiLabelMap.CommonBack}" target="listFormGroup" style="buttontext create"/>
+		                        </container>
+                                <screenlet title="${uiLabelMap.EditFormGroup}">
+                                    <include-form name="EditFormGroup" location="component://platform/widget/PlatformForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>

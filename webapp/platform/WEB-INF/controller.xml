@@ -28,10 +28,33 @@
    		<security https="true" auth="false"/>
    		<response name="success" type="view" value="entityManagement"/>
     </request-map>
+    
     <!-- 表单管理 -->
-    <request-map uri="formManagement">
-   		<security https="true" auth="false"/>
-   		<response name="success" type="view" value="formManagement"/>
+    <request-map uri="listFormGroup">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="listFormGroup"/>
+    </request-map>
+    <request-map uri="editFormGroup">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="createFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="createFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="updateFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="updateFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="removeFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="removeFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="listFormGroup"/>
     </request-map>
     
     <!-- 下载实体xml -->
@@ -57,5 +80,6 @@
     <!-- View Mappings -->
     <view-map name="main" type="screen" page="component://platform/widget/PlatformScreens.xml#main"/>
     <view-map name="entityManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#entityManagementScreen"/>
-    <view-map name="formManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#formManagementScreen"/>
+    <view-map name="listFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#ListFormGroupScreen"/>
+    <view-map name="editFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#EditFormGroupScreen"/>
 </site-conf>

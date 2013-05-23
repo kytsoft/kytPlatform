@@ -19,7 +19,7 @@ under the License.
 -->
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
-    <form name="CreateProductCategoryAttribute" header-row-style="header-row" default-table-style="basic-table" type="single" target="createProductCategoryAttribute" title="">
+    <form name="中文" header-row-style="header-row" default-table-style="basic-table" type="single" target="createProductCategoryAttribute" title="">
         <auto-fields-service service-name="createProductCategoryAttribute" default-field-type="edit"/>
         <field name="productCategoryId"><display/></field>
         <field name="submitForm" title="${uiLabelMap.CommonCreate}"><submit/></field>

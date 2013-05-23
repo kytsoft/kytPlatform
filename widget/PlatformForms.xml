@@ -2,11 +2,54 @@
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
 
+	<form name="ListFormGroup" type="list" list-name="formGroups"
+		target="editFormGroup" odd-row-style="alternate-row" 
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-condition entity-name="FormGroup" list="formGroups" />
+		</actions>
+		<field name="formGroupId"><display also-hidden="true" /></field>
+		<field name="title">
+			<display />
+		</field>
+		<field name="fileName">
+			<display />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}"><submit button-type="text-link" /></field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+            <hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                <parameter param-name="formGroupId"/>
+            </hyperlink>
+        </field>
+	</form>
+
+	<form name="EditFormGroup" type="single" target="updateFormGroup"
+		title="" default-map-name="formGroup" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="FormGroup" value-field="formGroup" />
+		</actions>
+		<alt-target use-when="formGroup==null" target="createFormGroup" />
+		<field use-when="formGroup!=null" name="formGroupId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="title">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="fileName">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="text-link" />
+		</field>
+	</form>
+
 	<form name="ListForms" type="list" list-name="formList"
 		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
 		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
 		<actions>
-			<service service-name="getFormList"/>
+			<service service-name="getFormList" />
 		</actions>
 		<field name="name">
 			<display />
@@ -15,7 +58,7 @@
 			<display />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
-			<submit button-type="button" />
+			<submit button-type="text-link" />
 		</field>
 	</form>
 

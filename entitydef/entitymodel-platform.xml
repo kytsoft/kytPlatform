@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--========================================================= -->
+	<!--======================== Defaults ======================= -->
+	<!--========================================================= -->
+	<title>Entity of Platform Component</title>
+	<description>None</description>
+	<copyright />
+	<version />
+	
+	<entity entity-name="FormGroup" package-name="com.kyt.platform.entitys"
+		title="FormGroup Entity">
+		<field name="formGroupId" type="id-ne"></field>
+		<field name="title" type="name"></field>
+		<field name="fileName" type="url"></field>
+		<prim-key field="formGroupId" />
+	</entity>
+
+</entitymodel>
