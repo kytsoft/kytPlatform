@@ -81,8 +81,20 @@
     	<security auth="true" https="true"/>
     	<response name="success" type="view" value="examinationForm"></response>
     </request-map>
-
+    <request-map uri="gettype">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="getFormAttribute"/>
+   		<response name="success" type="view" value="gettype"/>
+    </request-map>
+    <!-- 修改表单属性，提交操作 -->
+    <request-map uri="formsubmit">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="setFormAttribute"/>
+   		<response name="success" type="view" value="formsubmit"/>
+    </request-map>
     <!-- View Mappings -->
+     <view-map name="formsubmit" type="screen" page="component://platform/widget/PlatformScreens.xml#formsubmit"/>
+    <view-map name="gettype" type="screen" page="component://platform/widget/PlatformScreens.xml#typeList"/>
     <view-map name="main" type="screen" page="component://platform/widget/PlatformScreens.xml#main"/>
     <view-map name="entityManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#entityManagementScreen"/>
     <view-map name="listFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#ListFormGroupScreen"/>

@@ -50,21 +50,53 @@
 		</field>
 	</form>
 
-	<form name="ListForms" type="list" list-name="formList"
+	<!-- Edit liu jianping -->
+<form name="ListForms" type="list" list-name="formList"
 		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
-		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar" >
 		<actions>
-			<service service-name="getFormList" />
+			<service service-name="getFormList"/>
 		</actions>
 		<field name="name">
 			<display />
 		</field>
-		<field name="type">
-			<display />
+	  		<field name="type">
+	  		<!-- <lookup  target-form-name="gettype?formName=${name}"  >
+	  		</lookup> -->
+	  		<display />
+	  		</field> 
+		<field name="dddd"  title="11">
+		    <hyperlink target="gettype"  description="${uiLabelMap.CommonUpdate}" >
+                <parameter param-name="formName" from-field="name"/>
+            </hyperlink>
 		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonEmptyHeader}" widget-style="buttontext">
+            <hyperlink target="gettype" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                 <parameter param-name="formName" from-field="name"/>
+            </hyperlink>
+        </field>
+	</form>
+<form name="setformAttribute" type="list" list-name="dates"   
+		target="aaa" odd-row-style="alternate-row"
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		<actions>
+		<service service-name="getformAttributes">
+			<field-map field-name="formName"  value="${formName}"/>
+		</service>	
+		</actions>
+		<field name="name"  ><display></display></field>
+		<field name="value" 
+		       title="${uiLabelMap.AccountingAgreementTypeId}">
+		       <drop-down allow-empty="true">
+		            <entity-options
+		             description="${description}"
+		             entity-name="AgreementType"
+		             key-field-name="agreementTypeId" />
+		       </drop-down>
+		</field>
+		
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
-			<submit button-type="text-link" />
+			<submit button-type="button" />
 		</field>
 	</form>
-
 </forms>

@@ -157,5 +157,28 @@
         <value xml:lang="en">File Name</value>
         <value xml:lang="zh">文件名</value>
     </property>
-    
+        <property key="type">
+        <value xml:lang="en">Type </value>
+        <value xml:lang="zh">类型</value>
+    </property>
+    <property key="formAttrEdit">
+        <value xml:lang="en">Form Attribute</value>
+        <value xml:lang="zh">表单属性修改</value>
+    </property>
+    <property key="BT">
+        <value xml:lang="en">MUST</value>
+        <value xml:lang="zh">必选项</value>
+    </property>
+    <property key="formName">
+        <value xml:lang="en">MUST</value>
+        <value xml:lang="zh">表单名称：</value>
+    </property>
+    <property key="formType">
+        <value xml:lang="en">Type</value>
+        <value xml:lang="zh">表单类型：</value>
+    </property>
+    <property key="xiugai">
+        <value xml:lang="en">EDIT</value>
+        <value xml:lang="zh">修改</value>
+    </property>
 </resource>

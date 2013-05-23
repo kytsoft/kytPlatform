@@ -115,4 +115,40 @@
 			</widgets>
 		</section>
 	</screen>
+	<screen name="typeList">
+        <section>
+            <actions>
+            <property-map resource="PlatformUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+				<set field="formAtt"  default-value="111" value="${parameters.formAtt}"/>	
+                <set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css" global="true"/>
+                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+               <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body"> 
+				            <platform-specific><html><html-template location="component://platform/webapp/platform/common/formAttribute.ftl"/></html></platform-specific>	 
+				     </decorator-section>           
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>	
+    <screen name="formsubmit">
+        <section>
+            <actions>
+            <property-map resource="PlatformUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+				<set field="formName"  default-value="111" value="${parameters.formName}"/>	
+                <set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css" global="true"/>
+            </actions>
+            <widgets>
+               <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body"> 
+				            <platform-specific><html><html-template location="component://platform/webapp/platform/common/formAttributesuccess.ftl"/></html></platform-specific>	 
+				     </decorator-section>           
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>	
 </screens>
