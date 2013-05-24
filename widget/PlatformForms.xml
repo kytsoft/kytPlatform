@@ -18,7 +18,7 @@
 			<display />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
-			<submit button-type="button" />
+			<submit button-type="text-link" />
 		</field>
 		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
 			<hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}">
@@ -45,7 +45,7 @@
 			<text size="30" maxlength="60" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
-			<submit button-type="text-link" />
+			<submit button-type="button" />
 		</field>
 	</form>
 	<form name="createForms" type="single" target="updateFormGroup"
