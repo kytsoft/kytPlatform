@@ -9,7 +9,7 @@
 			<entity-condition entity-name="FormGroup" list="formGroups" />
 		</actions>
 		<field name="formGroupId">
-			<hyperlink target="" also-hidden="true"></hyperlink>
+			<hyperlink target="11" description="${formGroupId}"/>
 		</field>
 		<field name="title">
 			<display />
@@ -21,8 +21,7 @@
 			<submit button-type="text-link" />
 		</field>
 		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
-			<hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}"
-				also-hidden="false">
+			<hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}">
 				<parameter param-name="formGroupId" />
 			</hyperlink>
 		</field>
