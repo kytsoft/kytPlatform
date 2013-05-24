@@ -115,7 +115,7 @@
 				<field-map field-name="formName" value="${formName}" />
 			</service>
 		</actions>
-		<field name="name">
+		<field name="name"> <!-- qqq -->
 			<display></display>
 		</field>
 		<field name="value" title="${uiLabelMap.AccountingAgreementTypeId}">
