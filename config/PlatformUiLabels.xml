@@ -31,6 +31,10 @@
         <value xml:lang="en">Form Management</value>
         <value xml:lang="zh">表单管理</value>
     </property>
+    <property key="ScreenManagement">
+        <value xml:lang="en">Screen Management</value>
+        <value xml:lang="zh">页面管理</value>
+    </property>
     <property key="PlatformApplication">
         <value xml:lang="en">Platform Application</value>
         <value xml:lang="zh">Platform应用程序</value>

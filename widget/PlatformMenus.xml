@@ -4,5 +4,6 @@
         <menu-item name="main" title="${uiLabelMap.CommonMain}"><link target="main"/></menu-item>
         <menu-item name="entityManagement" title="${uiLabelMap.EntityManagement}"><link target="entityManagement"/></menu-item>
         <menu-item name="formManagement" title="${uiLabelMap.FormManagement}"><link target="listFormGroup"/></menu-item>
+        <menu-item name="screenManagement" title="${uiLabelMap.ScreenManagement}"><link target="listScreenGroup"/></menu-item>
     </menu>
 </menus>
