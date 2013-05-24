@@ -78,54 +78,54 @@
 	</form>
 
 	<!-- Edit liu jianping -->
-<form name="ListForms"  type="list"  list-name="formList"
+	<form name="ListForms" type="list" list-name="formList"
 		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
-		header-row-style="header-row-2" default-table-style="basic-table hover-bar" >
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
 		<actions>
-			<set field="fileNames" value="${fileName}"/>			
+			<set field="fileNames" value="${fileName}" />
 			<service service-name="getFormList">
-				<field-map field-name="fileName"  from-field="fileNames"/>
+				<field-map field-name="fileName" from-field="fileNames" />
 			</service>
 		</actions>
 		<field name="name">
 			<display />
 		</field>
-	  		<field name="type">
-	  		<!-- <lookup  target-form-name="gettype?formName=${name}"  >
-	  		</lookup> -->
-	  		<display />
-	  		</field> 
-		<field name="dddd"  title="11">
-		    <hyperlink target="gettype"  description="${uiLabelMap.CommonUpdate}" >
-                <parameter param-name="formName" from-field="name"/>
-                <parameter param-name="fileName"  from-field="fileNames"/>
-            </hyperlink>
+		<field name="type">
+			<!-- <lookup target-form-name="gettype?formName=${name}" > </lookup> -->
+			<display />
 		</field>
-		<field name="deleteLink" title="${uiLabelMap.CommonEmptyHeader}" widget-style="buttontext">
-            <hyperlink target="gettype" description="${uiLabelMap.CommonDelete}" also-hidden="false">
-                 <parameter param-name="formName" from-field="name"/>
-            </hyperlink>
-        </field>
+		<field name="dddd" title="11">
+			<hyperlink target="gettype" description="${uiLabelMap.CommonUpdate}">
+				<parameter param-name="formName" from-field="name" />
+				<parameter param-name="fileName" from-field="fileNames" />
+			</hyperlink>
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonEmptyHeader}"
+			widget-style="buttontext">
+			<hyperlink target="gettype" description="${uiLabelMap.CommonDelete}"
+				also-hidden="false">
+				<parameter param-name="formName" from-field="name" />
+			</hyperlink>
+		</field>
 	</form>
-<form name="setformAttribute" type="list" list-name="dates"   
-		target="aaa" odd-row-style="alternate-row"
-		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+	<form name="setformAttribute" type="list" list-name="dates"
+		target="aaa" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
 		<actions>
-		<service service-name="getformAttributes">
-			<field-map field-name="formName"  value="${formName}"/>
-		</service>	
+			<service service-name="getformAttributes">
+				<field-map field-name="formName" value="${formName}" />
+			</service>
 		</actions>
-		<field name="name"  ><display></display></field>
-		<field name="value" 
-		       title="${uiLabelMap.AccountingAgreementTypeId}">
-		       <drop-down allow-empty="true">
-		            <entity-options
-		             description="${description}"
-		             entity-name="AgreementType"
-		             key-field-name="agreementTypeId" />
-		       </drop-down>
+		<field name="name">
+			<display></display>
 		</field>
-		
+		<field name="value" title="${uiLabelMap.AccountingAgreementTypeId}">
+			<drop-down allow-empty="true">
+				<entity-options description="${description}"
+					entity-name="AgreementType" key-field-name="agreementTypeId" />
+			</drop-down>
+		</field>
+
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
