@@ -72,7 +72,7 @@
 			<text size="30" maxlength="60" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
-			<submit button-type="button" />
+			<submit button-type="button" /> 
 		</field>
 	</form>
 
