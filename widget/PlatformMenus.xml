@@ -5,5 +5,6 @@
         <menu-item name="entityManagement" title="${uiLabelMap.EntityManagement}"><link target="entityManagement"/></menu-item>
         <menu-item name="formManagement" title="${uiLabelMap.FormManagement}"><link target="listFormGroup"/></menu-item>
         <menu-item name="screenManagement" title="${uiLabelMap.ScreenManagement}"><link target="listScreenGroup"/></menu-item>
+        <!-- 11 -->
     </menu>
 </menus>
