@@ -21,7 +21,7 @@
 			<display />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
-			<submit button-type="button" />
+			<submit button-type="text-link" />
 		</field>
 		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
 			<hyperlink target="removeFormGroup" description="${uiLabelMap.CommonDelete}">
@@ -47,8 +47,11 @@
 		<field name="fileName" required-field="true">
 			<text size="30" maxlength="60" />
 		</field>
+		<field name="aa" title="sss">
+			<hyperlink target="javascript:set_value('111')" target-type="plain" description="wen"/>
+		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
-			<submit button-type="text-link" />
+			<submit button-type="button" />
 		</field>
 	</form>
 	<!-- 新建表单form -->	

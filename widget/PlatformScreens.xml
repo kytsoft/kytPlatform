@@ -1,216 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
-    <screen name="main">
-        <section>
-            <actions>
-                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                    		
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    
-    <screen name="entityManagementScreen">
-        <section>
-            <actions>
-                <set field="headerItem" value="entityManagement"/><!-- this highlights the selected menu-item with name "main" -->
-                <set field="layoutSettings.javaScripts[]" value="/platform/js/easyui/jquery.easyui.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/platform/js/jquery.xmlext.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/platform/js/comm.js" global="true"/>
-                <set field="layoutSettings.styleSheets[]" value="/platform/js/easyui/themes/icon.css" global="true"/>
-                <set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css" global="true"/>
-                <set field="layoutSettings.styleSheets[]" value="/platform/js/easyui/themes/bootstrap/easyui.css" global="true"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                    	<platform-specific><html><html-template location="component://platform/webapp/platform/common/entityxml.ftl"/></html></platform-specific>	
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    
-    <screen name="ListFormGroupScreen">
-        <section>
-            <actions>
-                <set field="headerItem" value="formManagement"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                    	<container style="button-bar">
-                            <link text="${uiLabelMap.CreateFormGroup}" target="editFormGroup" style="buttontext create"/>
-                        </container>
-                    	<screenlet title="${uiLabelMap.FormGroupList}">
-	                    	<include-form location="component://platform/widget/PlatformForms.xml" name="ListFormGroup"/>
-                    	</screenlet>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    
-     <screen name="EditFormGroupScreen">
-        <section>
-            <actions>
-                <set field="headerItem" value="formManagement"/>
-                <set field="titleProperty" value="PageTitleEditWebSite"/>
-                <set field="tabButtonItem" value="EditWebSite"/>
-                <set field="labelTitleProperty" value="PageTitleEditWebSite"/>
-                <set field="webSiteId" from-field="parameters.webSiteId"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <section>
-                            <widgets>
-	                            <container style="button-bar">
-		                            <link text="${uiLabelMap.CommonBack}" target="listFormGroup" style="buttontext create"/>
-		                        </container>
-                                <screenlet title="${uiLabelMap.EditFormGroup}">
-                                    <include-form name="EditFormGroup" location="component://platform/widget/PlatformForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
+	<screen name="main">
+		<section>
+			<actions>
+				<set field="headerItem" value="main" /><!-- this highlights the selected 
+					menu-item with name "main" -->
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="entityManagementScreen">
+		<section>
+			<actions>
+				<set field="headerItem" value="entityManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
+				<set field="layoutSettings.javaScripts[]" value="/platform/js/easyui/jquery.easyui.min.js"
+					global="true" />
+				<set field="layoutSettings.javaScripts[]" value="/platform/js/jquery.xmlext.js"
+					global="true" />
+				<set field="layoutSettings.javaScripts[]" value="/platform/js/comm.js"
+					global="true" />
+				<set field="layoutSettings.styleSheets[]" value="/platform/js/easyui/themes/icon.css"
+					global="true" />
+				<set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css"
+					global="true" />
+				<set field="layoutSettings.styleSheets[]" value="/platform/js/easyui/themes/bootstrap/easyui.css"
+					global="true" />
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<platform-specific>
+							<html>
+								<html-template
+									location="component://platform/webapp/platform/common/entityxml.ftl" />
+							</html>
+						</platform-specific>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="ListFormGroupScreen">
+		<section>
+			<actions>
+				<set field="headerItem" value="formManagement" />
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<container style="button-bar">
+							<link text="${uiLabelMap.CreateFormGroup}" target="editFormGroup"
+								style="buttontext create" />
+						</container>
+						<screenlet title="${uiLabelMap.FormGroupList}">
+							<include-form location="component://platform/widget/PlatformForms.xml"
+								name="ListFormGroup" />
+						</screenlet>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="EditFormGroupScreen">
+		<section>
+			<actions>
+				<set field="headerItem" value="formManagement" />
+				<set field="titleProperty" value="PageTitleEditWebSite" />
+				<set field="tabButtonItem" value="EditWebSite" />
+				<set field="labelTitleProperty" value="PageTitleEditWebSite" />
+				<set field="webSiteId" from-field="parameters.webSiteId" />
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<widgets>
+								<container style="button-bar">
+									<link text="${uiLabelMap.CommonBack}" target="listFormGroup"
+										style="buttontext create" />
+								</container>
+								<screenlet title="${uiLabelMap.EditFormGroup}">
+									<include-form name="EditFormGroup"
+										location="component://platform/widget/PlatformForms.xml" />
+								</screenlet>
+							</widgets>
+						</section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
 
 	<!-- The Form Test -->
 	<screen name="examinationForm">
 		<section>
 			<actions>
-				<set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
+				<set field="headerItem" value="formManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
 				<service service-name="examinationForm" result-map="formresult">
-					<field-map field-name="formname" value="${parameters.formname}"/>
-					<field-map field-name="xmlname" value="${parameters.xmlname}"/>
+					<field-map field-name="formname" value="${parameters.formname}" />
+					<field-map field-name="xmlname" value="${parameters.xmlname}" />
 				</service>
 			</actions>
 			<widgets>
 				<section>
 					<condition>
-						<if-compare operator="equals" value="true" field="formresult.findform"/>
+						<if-compare operator="equals" value="true"
+							field="formresult.findform" />
 					</condition>
 					<widgets>
-						<decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+						<decorator-screen name="PlatformCommonDecorator"
+							location="${parameters.mainDecoratorLocation}">
 							<decorator-section name="body">
-								<include-form location="${formresult.xmlpath}" name="${formresult.formname}"/>
+								<include-form location="${formresult.xmlpath}"
+									name="${formresult.formname}" />
 							</decorator-section>
 						</decorator-screen>
 					</widgets>
 					<fail-widgets>
-						<container><label style="h2" text="111"></label></container>
+						<container>
+							<label style="h2" text="111"></label>
+						</container>
 					</fail-widgets>
 				</section>
 			</widgets>
 		</section>
 	</screen>
 	<screen name="typeList">
-        <section>
-            <actions>
-            <property-map resource="PlatformUiLabels" map-name="uiLabelMap" global="true"/>
-                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-				<!-- <set field="formName"    value="${parameters.formName}"/>	
-				<set field="formTitle"    value="${parameters.formTitle}"/>	
-				<set field="formtarget"   value="${parameters.formtarget}"/>	
-				<set field="formType"    value="${parameters.formType}"/>	 -->
-				<set field="formAtt"    value="${parameters.formAtt}"/>	
-                <set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css" global="true"/>
-                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
-            </actions>
-            <widgets>
-               <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body"> 
-				          <!--   <platform-specific><html><html-template location="component://platform/webapp/platform/common/formAttribute.ftl"/></html></platform-specific>	 
-				     		 -->
-				     			<screenlet title="${uiLabelMap.EditForm}">
-                                    <include-form name="updateForms" location="component://platform/widget/PlatformForms.xml"/>
-                                </screenlet>
-				     </decorator-section>           
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>	
-    <screen name="formsubmit">
-        <section>
-            <actions>
-            <property-map resource="PlatformUiLabels" map-name="uiLabelMap" global="true"/>
-                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
-				<set field="formName"  default-value="111" value="${parameters.formName}"/>	
-                <set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css" global="true"/>
-            </actions>
-            <widgets>
-               <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body"> 
-				            <platform-specific><html><html-template location="component://platform/webapp/platform/common/formAttributesuccess.ftl"/></html></platform-specific>	 
-				     </decorator-section>           
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>	
-    <screen name="formManagementScreen">
-        <section>
-            <actions>
-              <set field="fileName" value="${parameters.fileName}"/>
-              <set field="formGroupId" value="${parameters.groupId}"/>
-                <set field="headerItem" value="formManagement"/><!-- this highlights the selected menu-item with name "main" -->
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-	                    <container style="button-bar">
-	                            <link text="${uiLabelMap.CreateForm}" target="createForm" style="buttontext create">
-	                            		<parameter param-name="fileName"  from-field="fileName"/>
-	                            		<parameter param-name="formGroupId"  from-field="formGroupId"/>
-	                            </link>
-	                        </container>
-                    	<include-form location="component://platform/widget/PlatformForms.xml" name="ListForms"/>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    <screen name="createForm">
-        <section>
-            <actions>
-                <set field="headerItem" value="formManagement"/>
-                <set field="titleProperty" value="PageTitleEditWebSite"/>
-                <set field="tabButtonItem" value="EditWebSite"/>
-                <set field="labelTitleProperty" value="PageTitleEditWebSite"/>
-                <set field="webSiteId" from-field="parameters.webSiteId"/>
-                <set field="fileName"  value="${parameters.fileName}"/>
-                <set field="formGroupId"  value="${parameters.formGroupId}"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <section>
-                            <widgets>
-	                            <container style="button-bar">
-	                            <link text="${uiLabelMap.CreateForm}" target="createForm" style="buttontext create">
-	                            	<parameter param-name="fileName" from-field="fileName" />
-	                            	<parameter param-name="formGroupId" from-field="formGroupId" />
-	                            </link>
-	                        </container>
-                                <screenlet title="${uiLabelMap.createNewForm}">
-                                    <include-form name="createForms" location="component://platform/widget/PlatformForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
+		<section>
+			<actions>
+				<property-map resource="PlatformUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<set field="formAtt" default-value="111" value="${parameters.formAtt}" />
+				<set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css"
+					global="true" />
+				<set field="headerItem" value="formManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<platform-specific>
+							<html>
+								<html-template
+									location="component://platform/webapp/platform/common/formAttribute.ftl" />
+							</html>
+						</platform-specific>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	<screen name="formsubmit">
+		<section>
+			<actions>
+				<property-map resource="PlatformUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<set field="headerItem" value="formManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
+				<set field="formName" default-value="111" value="${parameters.formName}" />
+				<set field="layoutSettings.styleSheets[]" value="/platform/css/comm.css"
+					global="true" />
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<platform-specific>
+							<html>
+								<html-template
+									location="component://platform/webapp/platform/common/formAttributesuccess.ftl" />
+							</html>
+						</platform-specific>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	<screen name="formManagementScreen">
+		<section>
+			<actions>
+				<set field="fileName" value="${parameters.fileName}" />
+				<set field="headerItem" value="formManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<container style="button-bar">
+							<link text="${uiLabelMap.CreateForm}" target="createForm"
+								style="buttontext create" />
+						</container>
+						<include-form location="component://platform/widget/PlatformForms.xml"
+							name="ListForms" />
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	<screen name="createForm">
+		<section>
+			<actions>
+				<set field="fileName" value="${parameters.fileName}" />
+				<set field="headerItem" value="formManagement" /><!-- this highlights 
+					the selected menu-item with name "main" -->
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<container style="button-bar">
+							<link text="${uiLabelMap.CreateForm}" target="createForm"
+								style="buttontext create" />
+						</container>
+						<platform-specific>
+							<html>
+								<html-template
+									location="component://platform/webapp/platform/common/createForm.ftl" />
+							</html>
+						</platform-specific>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	<screen name="createForm">
+		<section>
+			<actions>
+				<set field="headerItem" value="formManagement" />
+				<set field="titleProperty" value="PageTitleEditWebSite" />
+				<set field="tabButtonItem" value="EditWebSite" />
+				<set field="labelTitleProperty" value="PageTitleEditWebSite" />
+				<set field="webSiteId" from-field="parameters.webSiteId" />
+			</actions>
+			<widgets>
+				<decorator-screen name="PlatformCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<widgets>
+								<container style="button-bar">
+									<link text="${uiLabelMap.CreateForm}" target="createForm?fileName=${parameters.fileName}"
+										style="buttontext create" />
+								</container>
+								<screenlet title="${uiLabelMap.EditFormGroup}">
+									<include-form name="createForms"
+										location="component://platform/widget/PlatformForms.xml" />
+								</screenlet>
+							</widgets>
+						</section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
 </screens>
