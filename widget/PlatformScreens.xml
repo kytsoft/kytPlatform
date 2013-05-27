@@ -2,7 +2,7 @@
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
-	<screen name="main2">
+	<screen name="main">
 		<section>
 			<actions>
 				<set field="headerItem" value="main" /><!-- this highlights the selected 
