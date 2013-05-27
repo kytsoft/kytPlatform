@@ -44,6 +44,9 @@
 		<field name="fileName" required-field="true">
 			<text size="30" maxlength="60" />
 		</field>
+		<field name="aa" title="sss">
+			<hyperlink target="javascript:set_value('111')" target-type="plain" description="wen"/>
+		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
 			<submit button-type="button" />
 		</field>
