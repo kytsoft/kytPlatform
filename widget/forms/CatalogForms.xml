@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.-->
 <forms xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <form name="中文" header-row-style="header-row" default-table-style="basic-table" type="single" target="createProductCategoryAttribute" title="">
+    <form name="中文11" header-row-style="header-row" default-table-style="basic-table" type="single" target="createProductCategoryAttribute" title="">
         <auto-fields-service service-name="createProductCategoryAttribute" default-field-type="edit"/>
         <field name="productCategoryId">
             <display/>
