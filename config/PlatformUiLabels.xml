@@ -194,7 +194,27 @@
         <value xml:lang="zh">新建表单</value>
     </property>
     <property key="target">
-        <value xml:lang="en">Url Address：</value>
-        <value xml:lang="zh">url地址：</value>
+        <value xml:lang="en">Url Address</value>
+        <value xml:lang="zh">url地址</value>
+    </property>
+     <property key="EditForm">
+        <value xml:lang="en">EditForm </value>
+        <value xml:lang="zh">表单维护</value>
+    </property>
+     <property key="createNewForm">
+        <value xml:lang="en">createNewForm </value>
+        <value xml:lang="zh">新建表单</value>
+    </property>
+     <property key="FormName">
+        <value xml:lang="en">FormName </value>
+        <value xml:lang="zh">表单名称</value>
+    </property>
+     <property key="FormType">
+        <value xml:lang="en">FormType </value>
+        <value xml:lang="zh">表单类型</value>
+    </property>
+     <property key="FormCtrl">
+        <value xml:lang="en">FormCtrl </value>
+        <value xml:lang="zh">表单操作</value>
     </property>
 </resource>

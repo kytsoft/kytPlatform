@@ -48,6 +48,8 @@ public class FormServices {
 		FormsDocument doc = FormsDocument.Factory.parse(url);
 		for (Form f : doc.getForms().getFormArray()) {
 			form = FastMap.newInstance();
+			form.put("formId", f.getId());
+//			form.put("target", f.getTarget());
 			form.put("name", f.getName());
 			form.put("type", f.getType());
 			datas.add(form);

@@ -16,5 +16,12 @@
 		<field name="fileName" type="url" not-null="true"></field>
 		<prim-key field="formGroupId" />
 	</entity>
-
+	<entity entity-name="FormManager" package-name="com.kyt.platform.entitys"
+		title="Form Entity">
+		<field name="formId" type="id-ne"></field>
+		<field name="formGroupId" type="id-ne"></field>
+		<field name="formName" type="name" not-null="true"></field>
+		<field name="formNamezh" type="name" not-null="true"></field>
+		<prim-key field="formId" />
+	</entity>
 </entitymodel>

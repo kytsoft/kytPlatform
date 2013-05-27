@@ -81,16 +81,16 @@
     	<security auth="true" https="true"/>
     	<response name="success" type="view" value="examinationForm"></response>
     </request-map>
-    <request-map uri="gettype">
+    <request-map uri="showforminfo">
     	<security https="true" auth="false"/>
     	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="getFormAttribute"/>
-   		<response name="success" type="view" value="gettype"/>
+   		<response name="success" type="view" value="showforminfo"/>
     </request-map>
     <!-- 修改表单属性，提交操作 -->
     <request-map uri="formsubmit">
     	<security https="true" auth="false"/>
     	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="setFormAttribute"/>
-   		<response name="success" type="view" value="formsubmit"/>
+   		<response name="success" type="view" value="formManagement"/>
     </request-map>
         <!-- 表单管理 -->
     <request-map uri="formManagement">
@@ -106,11 +106,18 @@
     <request-map uri="createFormsubmit">
    		<security https="true" auth="false"/>
     	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="createFormaction"/>
-   		<response name="success" type="view" value="createFormsubmit"/>
+   		<response name="success" type="view" value="formManagement"/>
+   		<response name="fail" type="view" value="formManagement"/>
+    </request-map>
+        <!-- 删除表单操作 -->
+    <request-map uri="deleteFormaction">
+   		<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="deleteFormaction"/>
+   		<response name="success" type="view" value="formManagement"/>
     </request-map>
     <!-- View Mappings -->
      <view-map name="formsubmit" type="screen" page="component://platform/widget/PlatformScreens.xml#formsubmit"/>
-    <view-map name="gettype" type="screen" page="component://platform/widget/PlatformScreens.xml#typeList"/>
+    <view-map name="showforminfo" type="screen" page="component://platform/widget/PlatformScreens.xml#typeList"/>
     <view-map name="main" type="screen" page="component://platform/widget/PlatformScreens.xml#main"/>
     <view-map name="entityManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#entityManagementScreen"/>
     <view-map name="listFormGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#ListFormGroupScreen"/>

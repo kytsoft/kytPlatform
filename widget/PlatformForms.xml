@@ -9,7 +9,10 @@
 			<entity-condition entity-name="FormGroup" list="formGroups" />
 		</actions>
 		<field name="formGroupId">
-			<hyperlink target="11" description="${formGroupId}"/>
+			<hyperlink target="formManagement" description="${formGroupId}">
+				<parameter param-name="fileName"  from-field="fileName"/>
+				<parameter param-name="groupId" from-field="formGroupId"/>
+			</hyperlink>
 		</field>
 		<field name="title">
 			<display />
@@ -48,64 +51,65 @@
 			<submit button-type="text-link" />
 		</field>
 	</form>
-	<form name="createForms" type="single" target="updateFormGroup"
-		title="" default-map-name="formGroup" header-row-style="header-row"
+	<!-- 新建表单form -->	
+	<form name="createForms" type="single" target="createFormsubmit" 
+		title=""   header-row-style="header-row"
 		default-table-style="basic-table">
 		<actions>
-			<entity-one entity-name="FormGroup" value-field="formGroup" />
+		<set field="formGroupId" value="${formGroupId}"/>
+		<!-- <set field="fileName" value="${fileName}"/> -->
 		</actions>
 		<alt-target use-when="formGroup==null" target="createFormGroup" />
-		<field use-when="formGroup!=null" name="formGroupId"
-			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+		<field name="formGroupId" required-field="true"  tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<text size="30" maxlength="60"  default-value="${formGroupId}"  />
 			<display also-hidden="true" />
 		</field>
-		<field name="fileName" required-field="true">
+ 		<field name="fileName" required-field="true" >
+			<text size="30" maxlength="60"  default-value="${fileName}" />
+			<hidden/>
+		</field> 
+		<field name="formName" required-field="true" title="${uiLabelMap.FormName}">
 			<text size="30" maxlength="60" />
 		</field>
-		<field name="formName" required-field="true">
-			<text size="30" maxlength="60" />
-		</field>
-		<field name="type" required-field="true">
-			<text size="30" maxlength="60" />
-		</field>
-		<field name="target" required-field="true">
+		<field name="target" required-field="true" title="${uiLabelMap.target}">
 			<text size="30" maxlength="60" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
-			<submit button-type="button" /> 
+			<submit button-type="text-link" />
 		</field>
 	</form>
 
 	<!-- Edit liu jianping -->
-	<form name="ListForms" type="list" list-name="formList"
+<!-- 获取表单信息 -->
+<form name="ListForms"  type="list"  list-name="formList"
 		target="updateGoogleCheckoutShippingMethod" odd-row-style="alternate-row"
-		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar" >
 		<actions>
-			<set field="fileNames" value="${fileName}" />
+			<set field="fileNames" value="${fileName}"/>			
 			<service service-name="getFormList">
-				<field-map field-name="fileName" from-field="fileNames" />
+				<field-map field-name="fileName"  from-field="fileNames"/>
 			</service>
 		</actions>
-		<field name="name">
+		<field name="name" title="${uiLabelMap.FormName}">
 			<display />
 		</field>
-		<field name="type">
-			<!-- <lookup target-form-name="gettype?formName=${name}" > </lookup> -->
-			<display />
+	 	 <field name="type"  title="${uiLabelMap.FormType}">
+	  		<display />
+	  		</field> 
+		<field name="alter"  title="${uiLabelMap.FormCtrl}">
+		    <hyperlink target="showforminfo"  description="${uiLabelMap.CommonUpdate}" >
+                <parameter param-name="formName" from-field="name"/>
+                <parameter param-name="fileName"  from-field="fileNames"/>
+                <parameter param-name="formGroupId"  from-field="formGroupId"/>
+            </hyperlink>
 		</field>
-		<field name="dddd" title="11">
-			<hyperlink target="gettype" description="${uiLabelMap.CommonUpdate}">
-				<parameter param-name="formName" from-field="name" />
-				<parameter param-name="fileName" from-field="fileNames" />
-			</hyperlink>
-		</field>
-		<field name="deleteLink" title="${uiLabelMap.CommonEmptyHeader}"
-			widget-style="buttontext">
-			<hyperlink target="gettype" description="${uiLabelMap.CommonDelete}"
-				also-hidden="false">
-				<parameter param-name="formName" from-field="name" />
-			</hyperlink>
-		</field>
+		<field name="deleteLink" title="${uiLabelMap.FormCtrl}" widget-style="buttontext">
+            <hyperlink target="deleteFormaction" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                 <parameter param-name="formName" from-field="name"/>
+                 <parameter param-name="fileName"  from-field="fileNames"/>
+                <parameter param-name="formGroupId"  from-field="formGroupId"/>
+            </hyperlink>
+        </field>
 	</form>
 	<form name="setformAttribute" type="list" list-name="dates"
 		target="aaa" odd-row-style="alternate-row" header-row-style="header-row-2"
@@ -125,6 +129,61 @@
 			</drop-down>
 		</field>
 
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+	</form>
+	<form name="updateForms" type="single" target="formsubmit"
+		title=""   header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+		<set  field="formId" value="${formAtt.formId}"/>
+		</actions>
+		<alt-target use-when="formId==null" target="createFormGroup" />
+		<field name="formId" required-field="true"  attribute-name="formAtt.formId"  tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display  also-hidden="true"/>
+		</field>
+		<field name="fileName" required-field="true"  attribute-name="formAtt.fileName">
+			<text size="30" maxlength="60"  default-value="${formAtt.fileName}" />
+			<hidden />
+		</field>
+		<field name="formGroupId" required-field="true"  attribute-name="formAtt.fileName">
+			<text size="30" maxlength="60"  default-value="${formAtt.formGroupId}" />
+			<hidden />
+		</field>
+		<field name="formName" required-field="true" >
+			<text size="30" maxlength="60"  default-value="${formAtt.formName}" />
+		</field>
+		<field name="target" required-field="true">
+			<text size="30" maxlength="60" default-value="${formAtt.formtarget}" />
+		</field>
+		<!-- <field name="formType" required-field="true">
+			<text size="30" maxlength="60" default-value="${formAtt.formType}"/>
+		</field> -->
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="text-link" />
+		</field>
+	</form>
+		<!-- 修改表单属性form -->
+<form name="setformAttribute" type="list" list-name="dates"   
+		target="aaa" odd-row-style="alternate-row"
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		<actions>
+		<service service-name="getformAttributes">
+			<field-map field-name="formName"  value="${formName}"/>
+		</service>	
+		</actions>
+		<field name="name"  ><display></display></field>
+		<field name="value" 
+		       title="${uiLabelMap.AccountingAgreementTypeId}">
+		       <drop-down allow-empty="true">
+		            <entity-options
+		             description="${description}"
+		             entity-name="AgreementType"
+		             key-field-name="agreementTypeId" />
+		       </drop-down>
+		</field>
+		
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
