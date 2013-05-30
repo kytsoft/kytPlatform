@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <property key="PlatformApplication">
+        <value xml:lang="en">Platform Application</value>
+        <value xml:lang="zh">Platform应用程序</value>
+    </property>
+    <property key="PlatformCompanyName">
+        <value xml:lang="en">OFBiz: Platform</value>
+    </property>
+    <property key="PlatformCompanySubtitle">
+        <value xml:lang="en">Part of the Open For Business Family of Open Source Software</value>
+        <value xml:lang="it">Un modulo della famiglia di software open source Open For Business</value>
+        <value xml:lang="zh">开源软件OFBiz的组成部分</value>
+    </property>
+    <property key="PlatformViewPermissionError">
+        <value xml:lang="en">You are not allowed to view this page.</value>
+        <value xml:lang="zh">不允许你浏览这个页面。</value>
+    </property>
+    
+    <property key="ApplicationManagement">
+        <value xml:lang="en">Application Management</value>
+        <value xml:lang="zh">应用管理</value>
+    </property>
+    <property key="EntityManagement">
+        <value xml:lang="en">Entity Management</value>
+        <value xml:lang="zh">实体管理</value>
+    </property>
+    <property key="FormManagement">
+        <value xml:lang="en">Form Management</value>
+        <value xml:lang="zh">表单管理</value>
+    </property>
+    <property key="ScreenManagement">
+        <value xml:lang="en">Screen Management</value>
+        <value xml:lang="zh">页面管理</value>
+    </property>
+
+	<property key="ApplicationList">
+        <value xml:lang="en">Application List</value>
+        <value xml:lang="zh">应用程序列表</value>
+    </property>
+   	<property key="CreateApplication">
+        <value xml:lang="en">Create Application</value>
+        <value xml:lang="zh">新建应用</value>
+    </property>
+    <property key="EditApplication">
+        <value xml:lang="en">Edit Application</value>
+        <value xml:lang="zh">应用程序维护</value>
+    </property>
+    <property key="FormFieldTitle_applicationId">
+		<value xml:lang="en">Application Id</value>
+		<value xml:lang="zh">应用程序ID</value>
+	</property>
+	<property key="FormFieldTitle_applicationName">
+		<value xml:lang="en">Application Name</value>
+		<value xml:lang="zh">应用程序名称</value>
+	</property>
+	<property key="FormFieldTitle_componentTitle">
+		<value xml:lang="en">componentName</value>
+		<value xml:lang="zh">组件名</value>
+	</property>
+	<property key="FormFieldTitle_webappName">
+		<value xml:lang="en">webappName</value>
+		<value xml:lang="zh">webapp路径</value>
+	</property>
+	<property key="FormFieldTitle_active">
+		<value xml:lang="en">active</value>
+		<value xml:lang="zh">激活</value>
+	</property>
+	<property key="Application">
+		<value xml:lang="en">application</value>
+		<value xml:lang="zh">应用程序</value>
+	</property>
+    
+
+    <property key="Associative">
+        <value xml:lang="en">Ass-entity </value>
+        <value xml:lang="zh">关联实体</value>
+    </property>
+    <property key="back">
+        <value xml:lang="en">Back </value>
+        <value xml:lang="zh">回退</value>
+    </property>
+    <property key="createNew">
+        <value xml:lang="en">create </value>
+        <value xml:lang="zh">新建</value>
+    </property>
+    <property key="deletes">
+        <value xml:lang="en">delete </value>
+        <value xml:lang="zh">移除</value>
+    </property>
+    <property key="describe">
+        <value xml:lang="en">describe</value>
+        <value xml:lang="zh">描述</value>
+    </property>
+    <property key="editors">
+        <value xml:lang="en">edit </value>
+        <value xml:lang="zh">编辑</value>
+    </property>
+    <property key="entityzh">
+        <value xml:lang="en">entity</value>
+        <value xml:lang="zh">实体名</value>
+    </property>
+    <property key="fieldName">
+        <value xml:lang="en">fieldName </value>
+        <value xml:lang="zh">字段名称</value>
+    </property>
+    <property key="fk">
+        <value xml:lang="en">FK </value>
+        <value xml:lang="zh">外键</value>
+    </property>
+    <property key="fkName">
+        <value xml:lang="en">fkName </value>
+        <value xml:lang="zh">外键名</value>
+    </property>
+    <property key="isnull">
+        <value xml:lang="en">IsNull </value>
+        <value xml:lang="zh">允许空值(null)</value>
+    </property>
+    <property key="managerAttribute">
+        <value xml:lang="en">Attribute Manager </value>
+        <value xml:lang="zh">字段维护</value>
+    </property>
+    <property key="managerentity">
+        <value xml:lang="en">Entity Manager </value>
+        <value xml:lang="zh">实体维护</value>
+    </property>
+    <property key="managerguanxi">
+        <value xml:lang="en">Companionship </value>
+        <value xml:lang="zh">关系维护</value>
+    </property>
+    <property key="packagezh">
+        <value xml:lang="en">package </value>
+        <value xml:lang="zh">包名</value>
+    </property>
+    <property key="primary">
+        <value xml:lang="en">primaryKey </value>
+        <value xml:lang="zh">是否主键</value>
+    </property>
+    <property key="primaryKey">
+        <value xml:lang="en">primaryKey </value>
+        <value xml:lang="zh">主键</value>
+    </property>
+    <property key="quxiao">
+        <value xml:lang="en">cancel </value>
+        <value xml:lang="zh">取消</value>
+    </property>
+    <property key="relation">
+        <value xml:lang="en">relation </value>
+        <value xml:lang="zh">关系</value>
+    </property>
+    <property key="save">
+        <value xml:lang="en">save </value>
+        <value xml:lang="zh">保存</value>
+    </property>
+    <property key="sizes">
+        <value xml:lang="en">Size </value>
+        <value xml:lang="zh">长度</value>
+    </property>
+    <property key="type">
+        <value xml:lang="en">Type </value>
+        <value xml:lang="zh">类型</value>
+    </property>
+
+	<property key="CreateFormGroup">
+
+		<value xml:lang="en">CreateFormGroup </value>
+
+		<value xml:lang="zh">新建表单组</value>
+	</property>
+
+	<!-- 表单管理 -->
+	<property key="FormGroupList">
+		<value xml:lang="en">FormGroupList </value>
+		<value xml:lang="zh">表单组列表</value>
+	</property>
+	<property key="EditFormGroup">
+		<value xml:lang="en">EditFormGroup </value>
+        <value xml:lang="zh">表单组维护</value>
+    </property>
+    <property key="FormFieldTitle_formGroupId">
+        <value xml:lang="en">FormGroupId</value>
+			<value xml:lang="zh">表单组ID</value>
+	</property>
+	<property key="FormFieldTitle_title">
+		<value xml:lang="en">Title</value>
+		<value xml:lang="zh">名称</value>
+	</property>
+	<property key="FormFieldTitle_fileName">
+		<value xml:lang="en">File Name</value>
+		<value xml:lang="zh">文件名</value>
+	</property>
+	<property key="type">
+		<value xml:lang="en">Type </value>
+		<value xml:lang="zh">类型</value>
+	</property>
+	<property key="formAttrEdit">
+		<value xml:lang="en">Form Attribute</value>
+		<value xml:lang="zh">表单属性修改</value>
+	</property>
+	<property key="formAttrcreate">
+		<value xml:lang="en">Form Attribute</value>
+		<value xml:lang="zh">新建表单</value>
+	</property>
+	<property key="BT">
+		<value xml:lang="en">MUST</value>
+		<value xml:lang="zh">必选项</value>
+	</property>
+	<property key="formName">
+		<value xml:lang="en">MUST</value>
+		<value xml:lang="zh">表单名称：</value>
+	</property>
+	<property key="formType">
+		<value xml:lang="en">Type</value>
+		<value xml:lang="zh">表单类型：</value>
+	</property>
+	<property key="xiugai">
+		<value xml:lang="en">EDIT</value>
+		<value xml:lang="zh">修改</value>
+	</property>
+	<property key="CreateForm">
+        <value xml:lang="en">Create Form</value>
+		<value xml:lang="zh">新建表单</value>
+	</property>
+	<property key="target">
+        <value xml:lang="en">Url Address</value>
+		<value xml:lang="zh">url地址</value>
+	</property>
+	<property key="EditForm">
+		<value xml:lang="en">EditForm </value>
+		<value xml:lang="zh">表单维护</value>
+	</property>
+     <property key="createNewForm">
+		<value xml:lang="en">createNewForm </value>
+		<value xml:lang="zh">新建表单</value>
+	</property>
+     <property key="FormName">
+		<value xml:lang="en">FormName </value>
+		<value xml:lang="zh">表单名称</value>
+	</property>
+     <property key="FormType">
+		<value xml:lang="en">FormType </value>
+		<value xml:lang="zh">表单类型</value>
+	</property>
+     <property key="FormCtrl">
+		<value xml:lang="en">FormCtrl </value>
+		<value xml:lang="zh">表单操作</value>
+	</property>
+	<property key="FormList">
+		<value xml:lang="en">FormList </value>
+		<value xml:lang="zh">表单列表</value>
+	</property>
+    <property key="FormFieldTitle_formNameZh">
+        <value xml:lang="en">Form Name</value>
+        <value xml:lang="zh">表单中文名称</value>
+    </property>
+    <property key="FormFieldTitle_formName">
+        <value xml:lang="en">Form Name</value>
+        <value xml:lang="zh">表单名称</value>
+    </property>
+    <property key="FormFieldTitle_formId">
+        <value xml:lang="en">Form ID</value>
+        <value xml:lang="zh">表单ID</value>
+    </property>
+    <property key="FormGroupRemove">
+        <value xml:lang="en">Are you sure you want to delete form group? </value>
+        <value xml:lang="zh">确定要删除该表单组吗？</value>
+	</property>
+	
+	<!-- screenGroup管理 -->
+	<property key="CreateScreenGroup">
+        <value xml:lang="en">Create Screen Group</value>
+        <value xml:lang="zh">新建页面组</value>
+    </property>
+    <property key="FormFieldTitle_screenGroupId">
+        <value xml:lang="en">screenGroupId</value>
+        <value xml:lang="zh">页面组ID</value>
+    </property>
+    <property key="sureRemove">
+        <value xml:lang="en">Are you sure you want to delete Form? </value>
+        <value xml:lang="zh">确定要删除此Form吗？</value>
+	</property>
+		<!--  screens管理  -->
+	<property key="CreateScreen">
+        <value xml:lang="en">Create Screen</value>
+        <value xml:lang="zh">新建页面</value>
+    </property>
+	<property key="ScreensList">
+        <value xml:lang="en">Screen list</value>
+        <value xml:lang="zh">页面列表</value>
+    </property>
+	<property key="ScreensEdit">
+        <value xml:lang="en">Screen Edit</value>
+        <value xml:lang="zh">页面编辑</value>
+    </property>
+	<property key="ScreensRemove">
+        <value xml:lang="en">Are you sure to delete this page?</value>
+        <value xml:lang="zh">确定删除这个页面?</value>
+    </property>
+	
+    <property key="formId">
+        <value xml:lang="en">Form ID</value>
+        <value xml:lang="zh">表单ID</value>
+    </property>
+    <property key="FormFieldTitle_screenId">
+        <value xml:lang="en">screenId</value>
+        <value xml:lang="zh">页面ID</value>
+    </property>
+    <property key="FormFieldTitle_screenName">
+        <value xml:lang="en">screenName</value>
+        <value xml:lang="zh">页面名称</value>
+    </property>
+</resource>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+	<form name="ListFormGroup" type="list" list-name="formGroups"
+		target="editFormGroup" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-and entity-name="FormGroup">
+				<field-map field-name="applicationId"/>
+			</entity-and>
+		</actions>
+		<field name="formGroupId">
+			<hyperlink target="listForm" description="${formGroupId}">
+				<parameter param-name="applicationId"/>
+				<parameter param-name="formGroupId"/>
+			</hyperlink>
+		</field>
+		<field name="applicationId">
+			<hidden/>
+		</field>
+		<field name="title">
+			<display />
+		</field>
+		<field name="fileName">
+			<display />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
+			<submit button-type="text-link" />
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="deleteFormGroup" description="${uiLabelMap.CommonDelete}" 
+				confirmation-message="${uiLabelMap.FormGroupRemove}">
+				<parameter param-name="formGroupId" />
+			</hyperlink>
+		</field>
+	</form>
+
+	<form name="EditFormGroup" type="single" target="updateFormGroup"
+		title="" default-map-name="formGroup" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="FormGroup" value-field="formGroup" />
+		</actions>
+		<alt-target use-when="formGroup==null" target="createFormGroup" />
+		<field use-when="formGroup!=null" name="formGroupId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="applicationId">
+			<hidden/>
+		</field>
+		<field name="title" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field use-when="formGroup!=null" name="fileName">
+			<display/>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" />
+		</field>
+	</form>
+	
+	<!-- Edit liu jianping -->
+	<!-- 获取表单信息 -->
+	<form name="ListForms"  type="list"  list-name="forms"
+		target="" odd-row-style="alternate-row"
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar" >
+		<actions>
+			<entity-and entity-name="Form">
+				<field-map field-name="formGroupId"/>
+			</entity-and>
+		</actions>
+		<field name="formId">
+			<display />
+		</field>
+		<field name="formNameZh">
+			<display />
+		</field>
+	 	<field name="formName">
+	  		<display />
+  		</field> 
+		<field name="alter" title="${uiLabelMap.CommonEdit}">
+		    <hyperlink target="editForm"  description="${uiLabelMap.CommonEdit}" >
+                <parameter param-name="formId"/>
+                <parameter param-name="formGroupId"/>
+            </hyperlink>
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+            <hyperlink target="deleteForm" description="${uiLabelMap.CommonDelete}" confirmation-message="${uiLabelMap.sureRemove}">
+                <parameter param-name="formId"/>
+                <parameter param-name="formGroupId"/>
+            </hyperlink>
+        </field>
+	</form>
+	<!-- 新建或修改表单form -->	
+	<form name="EditForm" type="single" target="createForm" 
+		title=""   header-row-style="header-row"
+		default-table-style="basic-table" default-map-name="form">
+		<actions>
+			<entity-one entity-name="Form"  value-field="form"/>
+		</actions>
+		<alt-target use-when="form!=null" target="updateForm" />
+		<field use-when="form!=null" name="formId" required-field="true"  tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="formGroupId" required-field="true" >
+			<hidden/>
+		</field>
+		<field name="applicationId">
+			<hidden/>
+		</field> 
+ 		<field name="formNameZh" required-field="true" >
+			<text size="30" maxlength="60" />
+		</field> 
+		<field use-when="form!=null" name="formName" >
+			<display/>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" />
+		</field>
+	</form>
+	
+</forms>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="ListApplicationScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="applicationManagement"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container style="button-bar">
+                            <link text="${uiLabelMap.CreateApplication}" target="editApplication" style="buttontext create"/>
+                        </container>
+                        <screenlet title="${uiLabelMap.ApplicationList}">
+                    		<include-form location="component://platform/widget/ApplicationForms.xml" name="ListApplicationForm"/>
+                    	</screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+     <screen name="EditApplicationScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="applicationManagement"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+	                            <container style="button-bar">
+		                            <link text="${uiLabelMap.CommonBack}" target="listApplication" style="buttontext create"/>
+		                        </container>
+                                <screenlet title="${uiLabelMap.EditApplication}">
+                                    <include-form name="EditApplicationForm" location="component://platform/widget/ApplicationForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+</screens>

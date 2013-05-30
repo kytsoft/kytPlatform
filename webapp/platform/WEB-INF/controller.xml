@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file. A component can override the
+         elements found in the common-controller.xml file. -->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+
+    <description>Platform Component Site Configuration File</description>
+
+    <!-- Events to run on every request before security (chains exempt) -->
+    <!--
+    <preprocessor>
+    </preprocessor>
+    -->
+    <!-- Events to run on every request after all other processing (chains exempt) -->
+    <!--
+    <postprocessor>
+        <event name="test" type="java" path="org.ofbiz.webapp.event.TestEvent" invoke="test"/>
+    </postprocessor>
+    -->
+
+    <!-- Request Mappings -->
+    <request-map uri="main"><security https="true" auth="true"/><response name="success" type="view" value="main"/></request-map>
+    
+    <!-- 应用管理 start -->
+    <request-map uri="listApplication">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="listApplication"/>
+    </request-map>
+    <request-map uri="editApplication">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="editApplication"/>
+    </request-map>
+    <request-map uri="createApplication">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="createApplication"/>
+        <response name="success" type="view" value="listApplication"/>
+        <response name="error" type="view" value="editApplication"/>
+    </request-map>
+    <request-map uri="updateApplication">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="updateApplication"/>
+        <response name="success" type="view" value="listApplication"/>
+        <response name="error" type="view" value="editApplication"/>
+    </request-map>
+    <request-map uri="deleteApplication">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="deleteApplication"/>
+        <response name="success" type="view" value="listApplication"/>
+        <response name="error" type="view" value="listApplication"/>
+    </request-map>
+    
+    <!-- 应用管理 end -->
+    
+    <!-- 实体管理 -->
+    <request-map uri="entityManagement">
+   		<security https="true" auth="false"/>
+   		<response name="success" type="view" value="entityManagement"/>
+    </request-map>
+    
+    
+    <!-- 表单管理 start -->
+    <request-map uri="listFormGroup">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="listFormGroup"/>
+    </request-map>
+    <request-map uri="editFormGroup">
+   		<security https="false" auth="true"/>
+   		<response name="success" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="createFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="createFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="updateFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="updateFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="editFormGroup"/>
+    </request-map>
+    <request-map uri="deleteFormGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="deleteFormGroup"/>
+        <response name="success" type="view" value="listFormGroup"/>
+        <response name="error" type="view" value="listFormGroup"/>
+    </request-map>
+     <request-map uri="listForm">
+   		<security https="false" auth="false"/>
+   		<response name="success" type="view" value="listForm"/>
+    </request-map>
+    <request-map uri="editForm">
+   		<security https="false" auth="false"/>
+   		<response name="success" type="view" value="editForm"/>
+    </request-map>
+    <request-map uri="createForm">
+   		<security https="false" auth="false"/>
+    	<event type="service" invoke="createForm"/>
+   		<response name="success" type="view" value="listForm"/>
+   		<response name="fail" type="view" value="listForm"/>
+    </request-map>
+    <request-map uri="updateForm">
+    	<security https="false" auth="false"/>
+    	<event type="service" invoke="updateForm"/>
+   		<response name="success" type="view" value="listForm"/>
+    </request-map>
+    <request-map uri="deleteForm">
+   		<security https="false" auth="false"/>
+    	<event type="service" invoke="deleteForm"/>
+   		<response name="success" type="view" value="listForm"/>
+    </request-map>
+    <!-- 表单组管理 end -->
+    
+    <!-- 下载实体xml -->
+    <request-map uri="downloadEntityXml">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.entity.EntityEvents" invoke="downloadEntityXml"/>
+   		<response name="success" type="none"/>
+    </request-map>
+    <!-- 上传实体xml -->
+    <request-map uri="uploadEntityXml">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.entity.EntityEvents" invoke="uploadEntityXml"/>
+   		<response name="success" type="none"/>
+<!--    		<response name="success" type="view" value="test"/> -->
+    </request-map>
+    <!-- 获取字段类型列表 -->
+    <request-map uri="getFieldTypes">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.entity.EntityEvents" invoke="getFieldTypes"/>
+   		<response name="success" type="none"/>
+    </request-map>
+    <!-- 测试表单  -->
+    <request-map uri="examinationForm">
+    	<security auth="true" https="true"/>
+    	<response name="success" type="view" value="examinationForm"></response>
+    </request-map>
+    
+    <request-map uri="showforminfo">
+    	<security https="true" auth="false"/>
+    	<event type="java" path="com.kyt.platform.form.FormEvents" invoke="getFormAttribute"/>
+   		<response name="success" type="view" value="showforminfo"/>
+    </request-map>
+    
+    <!-- screens组管理 -->
+    <request-map uri="listScreenGroup">
+    	<security https="true" auth="false"/>
+    	<response name="success" type="view" value="listScreenGroup"></response>
+    </request-map>
+    <request-map uri="editScreenGroup">
+    	<security https="true" auth="false"/>
+    	<response name="success" type="view" value="editScreenGroup"></response>
+    </request-map>
+    <request-map uri="createScreenGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="createScreenGroup"/>
+        <response name="success" type="view" value="listScreenGroup"/>
+        <response name="error" type="view" value="editScreenGroup"/>
+    </request-map>
+    <request-map uri="updateScreenGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="updateScreenGroup"/>
+        <response name="success" type="view" value="listScreenGroup"/>
+        <response name="error" type="view" value="editScreenGroup"/>
+    </request-map>
+    <request-map uri="removeScreenGroup">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="removeScreenGroup"/>
+        <response name="success" type="view" value="listScreenGroup"/>
+        <response name="error" type="view" value="listScreenGroup"/>
+    </request-map>
+    
+	<!-- screen管理 -->
+	<request-map uri="listScreens">
+    	<security https="true" auth="false"/>
+    	<response name="success" type="view" value="listScreens"></response>
+    </request-map>
+	<request-map uri="editScreens">
+    	<security https="true" auth="false"/>
+    	<response name="success" type="view" value="editScreens"></response>
+    </request-map>
+	<request-map uri="createScreens">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="createScreens"/>
+        <response name="success" type="view" value="listScreens"/>
+        <response name="error" type="view" value="editScreens"/>
+    </request-map>
+    <request-map uri="updateScreens">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="updateScreens"/>
+        <response name="success" type="view" value="listScreens"/>
+        <response name="error" type="view" value="editScreens"/>
+    </request-map>
+	<request-map uri="removeScreens">
+   		<security https="false" auth="true"/>
+   		<event type="service" invoke="removeScreens"/>
+        <response name="success" type="view" value="listScreens"/>
+        <response name="error" type="view" value="listScreens"/>
+    </request-map>
+
+	<!-- screenForm管理 -->
+	<request-map uri="listScreenForms">
+    	<security https="true" auth="false"/>
+    	<response name="success" type="view" value="listScreenForms"></response>
+    </request-map>
+
+    <!-- View Mappings -->
+    
+    <!-- 应用管理 start -->
+    <view-map name="listApplication" type="screen" page="component://platform/widget/ApplicationScreens.xml#ListApplicationScreen"/>
+    <view-map name="editApplication" type="screen" page="component://platform/widget/ApplicationScreens.xml#EditApplicationScreen"/>
+    <!-- 应用管理 end -->
+    
+    <!-- 表单管理 start -->
+    <view-map name="listFormGroup" type="screen" page="component://platform/widget/FormScreens.xml#ListFormGroupScreen"/>
+    <view-map name="editFormGroup" type="screen" page="component://platform/widget/FormScreens.xml#EditFormGroupScreen"/>
+    <view-map name="listForm" type="screen" page="component://platform/widget/FormScreens.xml#ListFormScreen"/>
+	<view-map name="editForm" type="screen" page="component://platform/widget/FormScreens.xml#EditFormScreen"/>
+    <!-- 表单管理 end -->
+    
+     <view-map name="formsubmit" type="screen" page="component://platform/widget/PlatformScreens.xml#formsubmit"/>
+    <view-map name="showforminfo" type="screen" page="component://platform/widget/PlatformScreens.xml#typeList"/>
+    <view-map name="main" type="screen" page="component://platform/widget/PlatformScreens.xml#main"/>
+    <view-map name="entityManagement" type="screen" page="component://platform/widget/PlatformScreens.xml#entityManagementScreen"/>
+    
+	<view-map name="examinationForm" type="screen" page="component://platform/widget/PlatformScreens.xml#examinationForm"/>
+	 	<view-map name="listScreenGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#listScreenGroup"/>
+	<view-map name="editScreenGroup" type="screen" page="component://platform/widget/PlatformScreens.xml#editScreenGroupScreen"/>
+	<view-map name="listScreens" type="screen" page="component://platform/widget/PlatformScreens.xml#ListScreensScreen"/>
+	<view-map name="editScreens" type="screen" page="component://platform/widget/PlatformScreens.xml#EditScreensScreen"/>
+	<view-map name="listScreenForms" type="screen" page="component://platform/widget/PlatformScreens.xml#ListScreenFormsScreen"/>
+	
+</site-conf>

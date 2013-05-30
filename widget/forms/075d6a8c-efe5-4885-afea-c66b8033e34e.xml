@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <form name="35765732-b45a-4e6e-b300-6823a6c6943e" type="single" title="" id="10040" default-table-style="basic-table"/>
+    <form name="4f3728f6-8f5c-447a-98c9-622c7923de6a" type="single" title="" id="10041" default-table-style="basic-table"/>
+    <form name="41494056-0116-42ac-ad8d-59601eef0272" type="single" title="" id="10042" default-table-style="basic-table"/>
+</forms>

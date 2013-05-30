@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="ListFormGroupScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/>
+                <set field="dropdownLinkUrl" value="listFormGroup"/>
+                <set field="applicationId" from-field="parameters.applicationId" default-value="10010"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container>
+	                   		<include-form location="component://platform/widget/ApplicationForms.xml" name="DropdownApplicationForm"/>
+                    	</container>
+                    	<container style="button-bar">
+                            <link text="${uiLabelMap.CreateFormGroup}" target="editFormGroup" style="buttontext create">
+                            	<parameter param-name="applicationId"/>
+                            </link>
+                        </container>
+                       	<screenlet title="${uiLabelMap.FormGroupList}">
+                    		<include-form location="component://platform/widget/FormForms.xml" name="ListFormGroup"/>
+                    	</screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+     <screen name="EditFormGroupScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/>
+                <set field="applicationId" from-field="parameters.applicationId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+	                            <container style="button-bar">
+		                            <link text="${uiLabelMap.CommonBack}" target="listFormGroup" style="buttontext create">
+		                            	<parameter param-name="applicationId"/>
+		                            </link>
+		                        </container>
+                                <screenlet title="${uiLabelMap.EditFormGroup}">
+                                    <include-form name="EditFormGroup" location="component://platform/widget/FormForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ListFormScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/>
+                <set field="formGroupId" from-field="parameters.formGroupId"/>
+                <set field="applicationId" from-field="parameters.applicationId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container>
+                            <label style="h2">${uiLabelMap.FormList}</label>
+                        </container>
+	                    <container style="button-bar">
+                            <link text="${uiLabelMap.CommonBack}" target="listFormGroup" style="buttontext create">
+                            	<parameter param-name="applicationId"/>
+                            	<parameter param-name="formGroupId"/>
+                            </link>
+                            <link text="${uiLabelMap.CreateForm}" target="editForm" style="buttontext create">
+                           	 	<parameter param-name="applicationId"/>
+                           		<parameter param-name="formGroupId"/>
+                            </link>
+                        </container>
+                    	<include-form location="component://platform/widget/FormForms.xml" name="ListForms"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="EditFormScreen">
+        <section>
+            <actions>
+                <set field="headerItem" value="formManagement"/>
+                <set field="fileName"  value="${parameters.fileName}"/>
+                <set field="formGroupId"  value="${parameters.formGroupId}"/>
+                <set field="applicationId" from-field="parameters.applicationId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PlatformCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+	                            <container style="button-bar">
+	                             <link text="${uiLabelMap.CommonBack}" target="listForm" style="buttontext create">
+	                             	<parameter param-name="applicationId"/>
+	                            	<parameter param-name="formGroupId"/>
+	                            </link>
+	                        </container>
+                                <screenlet title="${uiLabelMap.createNewForm}">
+                                    <include-form name="EditForm" location="component://platform/widget/FormForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+</screens>

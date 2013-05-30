@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <form name="demoform19" type="single" title="" target="demo1s34" id="10115" default-table-style="basic-table"/>
+    <form name="demoform16" type="single" title="" target="demo" id="10180" default-table-style="basic-table"/>
+    <form name="demoform1212" type="single" title="" target="bbbbbbbdddddd" id="10190" default-table-style="basic-table"/>
+</forms>

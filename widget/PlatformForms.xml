@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+	<!-- screenGroup管理 -->
+	<form name="ListScreenGroup" type="list" list-name="screenGroups"
+		target="editScreenGroup" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-condition entity-name="ScreenGroup" list="screenGroups" />
+		</actions>
+		<field name="screenGroupId">
+			<hyperlink target="listScreens" description="${screenGroupId}">
+				<parameter param-name="screenGroupId"/>
+			</hyperlink>
+		</field>
+		<field name="title">
+			<display />
+		</field>
+		<field name="fileName">
+			<display />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
+			<submit button-type="text-link" />
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="removeScreenGroup" description="${uiLabelMap.CommonDelete}" confirmation-message="${uiLabelMap.CommonConfirm}">
+				<parameter param-name="screenGroupId" />
+			</hyperlink>
+		</field>
+	</form>
+	
+	<form name="EditScreenGroup" type="single" target="updateScreenGroup"
+		title="" default-map-name="screenGroup" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="ScreenGroup" value-field="screenGroup" />
+		</actions>
+		<alt-target use-when="screenGroup==null" target="createScreenGroup" />
+		<field use-when="screenGroup!=null" name="screenGroupId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="title" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="fileName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<!-- screens管理 -->
+	<form name="ListScreensForm" type="list" list-name="screenslist"
+		target="editScreens" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-and entity-name="Screen">
+				<field-map field-name="screenGroupId"/>
+			</entity-and>
+		</actions>
+		<field name="screenId">
+			<hyperlink also-hidden="false" target-type="plain" description="${screenId}" target="javascript:openEdit('${screenId}','${screenGroupId}');">
+			</hyperlink>
+		</field>
+		<field name="screenName">
+			<display />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
+			<hyperlink target="editScreens" description="${uiLabelMap.CommonEdit}" link-type="hidden-form">
+				<parameter param-name="screenId" />
+				<parameter param-name="screenGroupId" />
+			</hyperlink>
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="removeScreens" description="${uiLabelMap.CommonDelete}" confirmation-message="${uiLabelMap.ScreensRemove}">
+				<parameter param-name="screenId" />
+				<parameter param-name="screenGroupId" />
+			</hyperlink>
+		</field>
+	</form>
+	
+	<form name="EditScreensForm" type="single" target="updateScreens"
+		title="" default-map-name="screenList" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="Screen" value-field="screenList" />
+		</actions>
+		<alt-target use-when="screenList==null" target="createScreens" />
+		<field use-when="screenList!=null" name="screenId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="screenGroupId"><hidden value="${screenGroupId}"/></field>
+		<field name="screenName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" request-confirmation="true" confirmation-message="Are you sure?"/>
+		</field>
+	</form>
+	
+	<!-- screen's Form 管理 -->
+	<form name="editScreenFormsForm" type="single" target="updateScreenForms"
+		title="" default-map-name="screenFormsList" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="ScreenForm" value-field="screenFormsList" />
+		</actions>
+		<alt-target use-when="screenFormsList==null" target="createScreenForms" />
+		<field name="screenId">
+			<display description="${parameters.screenId}"></display>
+		</field>
+		<field name="screenGroupId"><hidden value="${screenGroupId}"/></field>
+		<!-- <field name="formGroupId" required-field="true">
+			<drop-down allow-empty="false">
+				<entity-options description="${title}" entity-name="FormGroup" key-field-name="formGroupId">
+				</entity-options>
+			</drop-down>
+		</field>
+		<field name="formId" required-field="true">
+			<drop-down allow-empty="false">
+				<entity-options description="${formNameZh}" entity-name="Form" key-field-name="formId">
+					<entity-constraint name="formGroupId" env-name="FormGroup.formGroupId"/>
+				</entity-options>
+			</drop-down>
+		</field> -->
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" request-confirmation="true" confirmation-message="Are you sure?"/>
+		</field>
+	</form>
+
+	<form name="listScreenFormsForm" type="list" list-name="screenslist"
+		target="editScreens" odd-row-style="alternate-row" header-row-style="header-row-2"
+		default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-and entity-name="ScreenForm">
+				<field-map field-name="screenId"/>
+			</entity-and>
+		</actions>
+		<field name="screenId">
+			<display />
+		</field>
+		<field name="formId">
+			<display />
+		</field>
+		<field name="formName">
+			<display-entity entity-name="Form" description="${formNameZh}" key-field-name="formId">
+			</display-entity>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonEdit}">
+			<hyperlink target="editScreenForms" description="${uiLabelMap.CommonEdit}" link-type="hidden-form">
+				<parameter param-name="screenId" />
+				<parameter param-name="formId" />
+			</hyperlink>
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="removeScreenForms" description="${uiLabelMap.CommonDelete}" confirmation-message="${uiLabelMap.ScreensRemove}">
+				<parameter param-name="screenId" />
+				<parameter param-name="formId" />
+			</hyperlink>
+		</field>
+	</form>
+</forms>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+	<form name="ListApplicationForm" type="list" list-name="applications"
+		target="editApplication" odd-row-style="alternate-row"
+		header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+		<actions>
+			<entity-condition entity-name="Application" />
+		</actions>
+		<field name="applicationId">
+			<hyperlink target="editApplication" description="${applicationId}">
+				<parameter param-name="applicationId" />
+			</hyperlink>
+		</field>
+		<field name="applicationName">
+			<display />
+		</field>
+		<field name="componentTitle">
+			<display />
+		</field>
+		<field name="webappName">
+			<display />
+		</field>
+		<field name="active">
+			<display />
+		</field>
+		<field name="entityManagement" title="${uiLabelMap.EntityManagement}">
+			<hyperlink target="entityManagement" description="${uiLabelMap.EntityManagement}">
+				<parameter param-name="applicationId" />
+			</hyperlink>
+		</field>
+		<field name="eormManagement" title="${uiLabelMap.FormManagement}">
+			<hyperlink target="listFormGroup" description="${uiLabelMap.FormManagement}">
+				<parameter param-name="applicationId" />
+			</hyperlink>
+		</field>
+		<field name="screenManagement" title="${uiLabelMap.ScreenManagement}">
+			<hyperlink target="listScreenGroup" description="${uiLabelMap.ScreenManagement}">
+				<parameter param-name="applicationId" />
+			</hyperlink>
+		</field>
+		<field name="deleteLink" title="${uiLabelMap.CommonDelete}">
+			<hyperlink target="deleteApplication" description="${uiLabelMap.CommonDelete}"
+				confirmation-message="${uiLabelMap.CommonConfirm}">
+				<parameter param-name="applicationId" />
+			</hyperlink>
+		</field>
+	</form>
+
+	<form name="EditApplicationForm" type="single" target="createApplication"
+		title="" default-map-name="application" header-row-style="header-row"
+		default-table-style="basic-table">
+		<actions>
+			<entity-one entity-name="Application" value-field="application" />
+		</actions>
+		<alt-target use-when="application!=null" target="updateApplication" />
+		<field use-when="application!=null" name="applicationId"
+			tooltip="${uiLabelMap.CommonNotModifRecreat}">
+			<display also-hidden="true" />
+		</field>
+		<field name="applicationName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="componentTitle" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="webappName" required-field="true">
+			<text size="30" maxlength="60" />
+		</field>
+		<field name="active" required-field="true">
+			<drop-down>
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonSubmit}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<form name="DropdownApplicationForm" type="single" target="${dropdownLinkUrl}"
+		default-table-style="basic-table">
+		<field name="applicationId" event="onchange" title="${uiLabelMap.Application}"
+			action="this.form.submit();">
+			<drop-down>
+				<entity-options description="${applicationName}"
+					key-field-name="applicationId" entity-name="Application" />
+			</drop-down>
+		</field>
+	</form>
+
+</forms>

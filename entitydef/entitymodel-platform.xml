@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--========================================================= -->
+	<!--======================== Defaults ======================= -->
+	<!--========================================================= -->
+	<title>Entity of Platform Component</title>
+	<description>None</description>
+	<copyright />
+	<version />
+	
+	<entity entity-name="FormGroup" package-name="com.kyt.platform.entitys"
+		title="FormGroup Entity">
+		<field name="formGroupId" type="id-ne"></field>
+		<field name="title" type="name" not-null="true"></field>
+		<field name="fileName" type="url" not-null="true"></field>
+		<prim-key field="formGroupId" />
+	</entity>
+	<entity entity-name="Form" package-name="com.kyt.platform.entitys"
+		title="Form Entity">
+		<field name="formId" type="id-ne"></field>
+		<field name="formGroupId" type="id-ne"></field>
+		<field name="formNameZh" type="name" not-null="true"></field>
+		<field name="formName" type="name" not-null="true"></field>
+		<prim-key field="formId" />
+		<relation rel-entity-name="FormGroup" type="one">
+			<key-map field-name="formGroupId"/>
+		</relation>
+	</entity>
+
+	<entity entity-name="ScreenGroup" package-name="com.kyt.platform.entitys"
+		title="ScreenGroup Entity">
+		<field name="screenGroupId" type="id-ne"></field>
+		<field name="title" type="name" not-null="true"></field>
+		<field name="fileName" type="url" not-null="true"></field>
+		<prim-key field="screenGroupId" />
+	</entity>
+
+	<entity entity-name="Screen" package-name="com.kyt.platform.entitys"
+		title="Screen Entity">
+		<field name="screenId" type="id-ne"></field>
+		<field name="screenGroupId" type="id-ne"></field>
+		<field name="screenName" type="name" not-null="true"></field>
+		<prim-key field="screenId" />
+		<relation rel-entity-name="ScreenGroup" type="one">
+			<key-map field-name="screenGroupId"/>
+		</relation>
+	</entity>
+	
+	<entity entity-name="ScreenForm" package-name="com.kyt.platform.entitys"
+		title="Screen Form Relation Entity">
+		<field name="screenId" type="id-ne"></field>
+		<field name="formId" type="id-ne"></field>
+		<field name="seq" type="numeric" not-null="true"></field>
+		<prim-key field="screenId" />
+		<prim-key field="formId" />
+		<relation rel-entity-name="Screen" type="one">
+			<key-map field-name="screenId"/>
+		</relation>
+		<relation rel-entity-name="Form" type="one">
+			<key-map field-name="formId"/>
+		</relation>
+	</entity>
+</entitymodel>
